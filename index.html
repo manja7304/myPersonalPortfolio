@@ -34,6 +34,7 @@
         .skills, .soft-skills {
             display: flex;
             flex-wrap: wrap;
+            justify-content: center;
         }
         .skill, .soft-skill {
             flex: 1 1 200px;
@@ -49,16 +50,36 @@
             text-align: center;
             padding: 1rem 0;
         }
+        .profile-pic {
+            display: block;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+        }
+        @media (max-width: 480px) {
+            .skills, .soft-skills {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Welcome to My GitHub Profile! 👋</h1>
+    <h1>Welcome to My Personal Portfolio 👋</h1>
     <p>I'm Manjunath K G, a passionate software enthusiast and a second-year undergraduate student from Bengaluru, India. 🇮🇳</p>
 </header>
 
 <div class="container">
+    <img src="Photo.jpg" alt="Manjunath K G" class="profile-pic">
 
     <section class="section">
         <h2>About Me ℹ️</h2>
@@ -71,37 +92,37 @@
     <section class="section">
         <h2>Skills 🛠️</h2>
         <h3>Languages:</h3>
-        <div class="skills">
+        <div class="skills" id="languages">
             <div class="skill">Java</div>
             <div class="skill">C</div>
             <div class="skill">C++</div>
             <div class="skill">Python</div>
         </div>
         <h3>Database:</h3>
-        <div class="skills">
+        <div class="skills" id="database">
             <div class="skill">MySQL</div>
         </div>
         <h3>Version Control:</h3>
-        <div class="skills">
+        <div class="skills" id="version-control">
             <div class="skill">Git</div>
             <div class="skill">GitHub</div>
         </div>
         <h3>Development Tools:</h3>
-        <div class="skills">
+        <div class="skills" id="tools">
             <div class="skill">Visual Studio Code</div>
             <div class="skill">PyCharm</div>
             <div class="skill">Eclipse</div>
             <div class="skill">NetBeans</div>
         </div>
         <h3>Operating System:</h3>
-        <div class="skills">
+        <div class="skills" id="os">
             <div class="skill">Linux</div>
         </div>
     </section>
 
     <section class="section">
         <h2>Soft Skills 🌟</h2>
-        <div class="soft-skills">
+        <div class="soft-skills" id="soft-skills">
             <div class="soft-skill">📚 Willingness to Learn</div>
             <div class="soft-skill">🤝 Adaptability</div>
             <div class="soft-skill">💡 Enthusiasm for Technology</div>
@@ -129,5 +150,39 @@
     <p>"The only way to learn a new programming language is by writing programs in it." - Dennis Ritchie</p>
 </footer>
 
+<script>
+    const skills = {
+        languages: ['Java', 'C', 'C++', 'Python'],
+        database: ['MySQL'],
+        versionControl: ['Git', 'GitHub'],
+        tools: ['Visual Studio Code', 'PyCharm', 'Eclipse', 'NetBeans'],
+        os: ['Linux'],
+        softSkills: [
+            '📚 Willingness to Learn',
+            '🤝 Adaptability',
+            '💡 Enthusiasm for Technology',
+            '💬 Strong Communication',
+            '👥 Team Player'
+        ]
+    };
+
+    function populateSkills() {
+        const sections = ['languages', 'database', 'versionControl', 'tools', 'os', 'softSkills'];
+        sections.forEach(section => {
+            const container = document.getElementById(section.replace(/([A-Z])/g, '-$1').toLowerCase());
+            container.innerHTML = '';
+            skills[section].forEach(skill => {
+                const skillDiv = document.createElement('div');
+                skillDiv.className = section === 'softSkills' ? 'soft-skill' : 'skill';
+                skillDiv.textContent = skill;
+                container.appendChild(skillDiv);
+            });
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', populateSkills);
+</script>
+
 </body>
 </html>
+
