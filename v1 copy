@@ -680,19 +680,19 @@
                 <h3>🤖 Intelligent HR Candidate Profiling</h3>
                 <p>AI-powered recruitment automation platform with NLP-based resume parsing, LinkedIn data extraction, and conversational AI interface for intelligent candidate screening.</p>
                 <p><strong>Tech:</strong> Python, OpenAI API, NLP, Web Scraping</p>
-                <a href="#" class="project-link">View Project →</a>
+                <a href="https://github.com/manja7304/Intelligent-Chat-Interface" class="project-link">View Project →</a>
             </div>
             <div class="project-card">
                 <h3>📈 Dockerized Stock Data Pipeline</h3>
                 <p>Automated ETL system using Apache Airflow to orchestrate stock market data extraction from Alpha Vantage API with PostgreSQL storage and Docker containerization.</p>
                 <p><strong>Tech:</strong> Apache Airflow, Docker, PostgreSQL, Python</p>
-                <a href="#" class="project-link">View Project →</a>
+                <a href="https://github.com/manja7304/stock-pipeline" class="project-link">View Project →</a>
             </div>
             <div class="project-card">
                 <h3>🕷️ AI Web Scraper</h3>
                 <p>Intelligent web scraping system with Ollama LLM integration for content summarization, Streamlit UI, and BrightData proxy infrastructure for reliable data extraction.</p>
                 <p><strong>Tech:</strong> Python, Selenium, Ollama, Streamlit</p>
-                <a href="#" class="project-link">View Project →</a>
+                <a href="https://github.com/manja7304/AI-WEB-SCRAPING" class="project-link">View Project →</a>
             </div>
         </div>
     </section>
