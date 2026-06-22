@@ -3,79 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cutting LLM Token Costs by 30% — Manjunath K G</title>
-    <meta name="description" content="Enterprise LLM cost optimization: prompt engineering, model-tier routing, caching, and evaluation-driven tuning.">
+    <title>Cutting LLM Token Costs by 30% Without Sacrificing Quality — Manjunath K G</title>
+    <meta name="description" content="Model-tier routing, caching, and eval-gated prompt tuning.">
     <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/nav.css">
 </head>
 <body>
     <div class="bg-animation"></div>
     <div class="grid-overlay"></div>
-
-    <nav class="site-nav">
-        <ul>
-            <li><a href="../index.html">Portfolio</a></li>
-            <li><a href="index.html">Blog</a></li>
-        </ul>
-    </nav>
-
+    <header class="main-nav" id="mainNav">
+        <a href="../index.html" class="nav-brand"><span class="nav-brand-icon">M</span><span class="nav-brand-text">Manjunath<span class="accent">.</span></span></a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <div class="nav-panel" id="navPanel">
+            <ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="index.html" class="active">Blog</a></li><li><a href="../index.html#contact">Contact</a></li></ul>
+            <a href="../CorrectResume.pdf" class="nav-resume-btn" download>Resume</a>
+        </div>
+    </header>
     <article class="article-wrap">
         <a href="index.html" class="back-link">← All articles</a>
-
         <header class="article-header">
-            <div class="blog-tags">
-                <span class="blog-tag">LLM Ops</span>
-                <span class="blog-tag">Cost Engineering</span>
-            </div>
+            <div class="blog-tags"><span class="blog-tag">LLM Ops</span>
+                <span class="blog-tag">Cost</span></div>
             <h1>Cutting LLM Token Costs by 30% Without Sacrificing Quality</h1>
-            <div class="article-meta">
-                <span>Manjunath K G</span>
-                <span>April 2026</span>
-                <span>8 min read</span>
-            </div>
+            <div class="article-meta"><span>Manjunath K G</span><span>Apr 2026</span><span>8 min read</span></div>
         </header>
-
         <div class="article-content">
-            <p>At scale, LLM costs aren't a line item — they're a product constraint. Running dozens of agents per client engagement, we needed to cut token spend without degrading report quality. Here's what moved the needle.</p>
-
-            <h2>1. Model-Tier Routing with LiteLLM</h2>
-            <p>Not every step needs GPT-4-class reasoning. Route by task complexity:</p>
-            <ul>
-                <li><strong>Tier 1 (fast/cheap)</strong> — classification, routing, format validation</li>
-                <li><strong>Tier 2 (balanced)</strong> — analysis, summarization, standard reports</li>
-                <li><strong>Tier 3 (capable)</strong> — complex reasoning, novel vulnerability interpretation</li>
-            </ul>
-            <p>LiteLLM centralizes routing, fallbacks, and cost tracking across providers.</p>
-
-            <h2>2. Prompt Scaffolding Over Prompt Bloat</h2>
-            <p>Replace verbose instructions with structured scaffolds: few-shot examples, chain-of-thought templates, and output schemas. Shorter prompts + better outputs. We templatized system prompts per agent type and version-controlled them.</p>
-
-            <h2>3. Response Caching</h2>
-            <p>Identical or near-identical queries (common in batch assessments) hit cache instead of the API. Hash prompts + context for cache keys. Invalidate on prompt version bumps.</p>
-
-            <h2>4. Context Window Discipline</h2>
-            <p>Agents over-fetch context. Implement retrieval budgets: max chunks, max tokens per source, summarization of long documents before injection. Every token in context is a token billed twice (input + influence on output).</p>
-
-            <h2>5. Evaluation-Gated Changes</h2>
-            <p>Never optimize cost without measuring quality impact. RAGAS scores and human spot-checks on report samples confirmed our 30% token reduction didn't hurt faithfulness or relevancy.</p>
-
-            <div class="callout">
-                Report generation went from 6 hours to 10 minutes (~97% time reduction) partly because we stopped sending entire evidence dumps to the model — structured summaries instead.
-            </div>
-
-            <h2>Metrics to Track</h2>
-            <ul>
-                <li>Cost per engagement / per agent type</li>
-                <li>Input vs. output token ratio</li>
-                <li>Cache hit rate</li>
-                <li>Quality scores pre/post optimization</li>
-            </ul>
-
-            <p>Cost optimization is an engineering discipline. Treat it like performance tuning — measure, change, verify, repeat.</p>
+            <p>Model-tier routing, caching, and eval-gated prompt tuning.</p>
+            <h2>1. Model-Tier Routing</h2>
+            <p>Cheap models for classification, capable models for reasoning.</p>
+            <h2>2. Response Caching</h2>
+            <p>Hash prompts + context; invalidate on prompt version bumps.</p>
+            <h2>3. Eval-Gated Changes</h2>
+            <p>Never optimize cost without measuring quality impact.</p>
+            <p><em>Manjunath K G — AI/ML Trainee Engineer @ Ampcus Cyber · CEH v13 · Building agentic AI for security.</em></p>
         </div>
     </article>
-
-    <footer class="site-footer">
-        <p>&copy; 2026 Manjunath K G · <a href="index.html" style="color: var(--neon-blue);">More articles</a></p>
-    </footer>
+    <footer class="site-footer"><p>&copy; 2026 Manjunath K G · <a href="index.html" style="color: var(--neon-blue);">More articles</a></p></footer>
+    <script src="../js/nav.js"></script>
 </body>
 </html>

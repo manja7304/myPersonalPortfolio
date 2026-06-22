@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Temporal Workflows for Reliable AI Agents — Manjunath K G</title>
-    <meta name="description" content="Using Temporal for durable AI agent workflows: checkpointing, fault recovery, and parallel execution.">
+    <title>Temporal Workflows for Reliable AI Agent Pipelines — Manjunath K G</title>
+    <meta name="description" content="Durable execution, checkpointing, and fault recovery for agent pipelines.">
     <link rel="stylesheet" href="../css/theme.css">
     <link rel="stylesheet" href="../css/nav.css">
 </head>
@@ -22,46 +22,20 @@
     <article class="article-wrap">
         <a href="index.html" class="back-link">← All articles</a>
         <header class="article-header">
-            <div class="blog-tags"><span class="blog-tag">Temporal</span><span class="blog-tag">Agentic AI</span></div>
+            <div class="blog-tags"><span class="blog-tag">Temporal</span>
+                <span class="blog-tag">Reliability</span></div>
             <h1>Temporal Workflows for Reliable AI Agent Pipelines</h1>
             <div class="article-meta"><span>Manjunath K G</span><span>May 2026</span><span>9 min read</span></div>
         </header>
         <div class="article-content">
-            <p>LLM calls are flaky. APIs timeout. Agents loop. If your multi-agent pipeline lives in a single Python script, one failure means restarting a 3-hour job. Temporal turns agent orchestration into durable, resumable workflows.</p>
-
-            <h2>Why Not Cron + Celery?</h2>
-            <p>Celery handles tasks, not long-running stateful workflows. Temporal gives you:</p>
-            <ul>
-                <li><strong>Durable execution</strong> — workflow state survives process crashes</li>
-                <li><strong>Automatic retries</strong> — with backoff policies per activity</li>
-                <li><strong>Visibility</strong> — inspect running workflows in the UI</li>
-                <li><strong>Saga patterns</strong> — compensate on partial failure</li>
-            </ul>
-
-            <h2>Mapping Agents to Activities</h2>
-            <pre>@workflow.defn
-class PentestWorkflow:
-    @workflow.run
-    async def run(self, engagement_id: str):
-        scope = await workflow.execute_activity(
-            classify_scope, engagement_id, start_to_close_timeout=timedelta(minutes=5))
-        wave1 = await asyncio.gather(*[
-            workflow.execute_activity(run_agent, agent, scope)
-            for agent in wave1_agents
-        ])
-        await workflow.execute_activity(aggregate, wave1)
-        ...</pre>
-
-            <h2>Checkpointing Between Waves</h2>
-            <p>Run discovery agents in wave 1, exploitation agents in wave 2 — each wave checkpoints to the evidence store before the next begins. If wave 2 fails at agent 15, resume from agent 15, not from zero.</p>
-
-            <h2>Production Lessons</h2>
-            <ul>
-                <li>Set <code>start_to_close_timeout</code> per agent type — web scans take longer than classifiers</li>
-                <li>Use heartbeats for long LLM calls so Temporal knows the activity is alive</li>
-                <li>Version workflows carefully — use patching for zero-downtime updates</li>
-                <li>Keep activities idempotent — retries will happen</li>
-            </ul>
+            <p>Durable execution, checkpointing, and fault recovery for agent pipelines.</p>
+            <h2>1. Why Temporal</h2>
+            <p>Durable state, automatic retries, workflow visibility.</p>
+            <h2>2. Agents as Activities</h2>
+            <p>Map each agent call to a Temporal activity with timeouts.</p>
+            <h2>3. Idempotency</h2>
+            <p>Design activities to survive retries without duplicate side effects.</p>
+            <p><em>Manjunath K G — AI/ML Trainee Engineer @ Ampcus Cyber · CEH v13 · Building agentic AI for security.</em></p>
         </div>
     </article>
     <footer class="site-footer"><p>&copy; 2026 Manjunath K G · <a href="index.html" style="color: var(--neon-blue);">More articles</a></p></footer>

@@ -3,85 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orchestrating 60+ AI Agents — Manjunath K G</title>
-    <meta name="description" content="Multi-agent orchestration patterns: Supervisor/Router, parallel waves, Temporal checkpointing, and fault recovery at scale.">
+    <title>Orchestrating 60+ AI Agents: Patterns That Scale — Manjunath K G</title>
+    <meta name="description" content="Supervisor/Router, parallel waves, checkpointing, and fault recovery.">
     <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/nav.css">
 </head>
 <body>
     <div class="bg-animation"></div>
     <div class="grid-overlay"></div>
-
-    <nav class="site-nav">
-        <ul>
-            <li><a href="../index.html">Portfolio</a></li>
-            <li><a href="index.html">Blog</a></li>
-        </ul>
-    </nav>
-
+    <header class="main-nav" id="mainNav">
+        <a href="../index.html" class="nav-brand"><span class="nav-brand-icon">M</span><span class="nav-brand-text">Manjunath<span class="accent">.</span></span></a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <div class="nav-panel" id="navPanel">
+            <ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="index.html" class="active">Blog</a></li><li><a href="../index.html#contact">Contact</a></li></ul>
+            <a href="../CorrectResume.pdf" class="nav-resume-btn" download>Resume</a>
+        </div>
+    </header>
     <article class="article-wrap">
         <a href="index.html" class="back-link">← All articles</a>
-
         <header class="article-header">
-            <div class="blog-tags">
-                <span class="blog-tag">Agentic AI</span>
-                <span class="blog-tag">Temporal</span>
-                <span class="blog-tag">Architecture</span>
-            </div>
+            <div class="blog-tags"><span class="blog-tag">Agentic AI</span>
+                <span class="blog-tag">Temporal</span></div>
             <h1>Orchestrating 60+ AI Agents: Patterns That Scale</h1>
-            <div class="article-meta">
-                <span>Manjunath K G</span>
-                <span>May 2026</span>
-                <span>11 min read</span>
-            </div>
+            <div class="article-meta"><span>Manjunath K G</span><span>May 2026</span><span>11 min read</span></div>
         </header>
-
         <div class="article-content">
-            <p>Running one LLM call is easy. Running sixty specialized agents across web, API, mobile, source code, and network surfaces — in parallel, with fault tolerance, under 4 hours — is an engineering problem.</p>
-
-            <h2>Why Multi-Agent Instead of One Mega-Prompt?</h2>
-            <p>Monolithic prompts hit context limits, blur expertise, and fail unpredictably. Specialized agents with narrow tool sets produce higher-quality outputs and are easier to test, version, and secure independently.</p>
-
-            <h2>Architecture Overview</h2>
-            <pre>Client Request
-    → Temporal Workflow (orchestrator)
-        → Supervisor Agent (routes by surface)
-            → Wave 1: 30+ agents (parallel)
-            → Checkpoint & aggregate
-            → Wave 2: dependent agents
-        → Evidence Store
-        → Report Generator Agent</pre>
-
-            <h2>Pattern 1: Supervisor / Router</h2>
-            <p>A lightweight supervisor classifies the engagement scope and delegates to surface-specific sub-agents. It never executes tools directly — only routes and merges results. This prevents one confused agent from having access to everything.</p>
-
-            <h2>Pattern 2: Phased Parallel Waves</h2>
-            <p>Not all agents can run simultaneously. Discovery agents run first; exploitation agents depend on their output. We batch independent work into waves of 30+ parallel executions, with Temporal managing dependencies between waves.</p>
-
-            <h2>Pattern 3: Checkpointing & Fault Recovery</h2>
-            <p>LLM calls fail. APIs timeout. Agents hallucinate tool names. Temporal workflows checkpoint after each wave — if agent #47 crashes, you resume from the last good state instead of restarting a 3-hour assessment.</p>
-
-            <div class="callout">
-                Result: assessment turnaround dropped from 3–5 days of manual work to under 4 hours with broader OWASP coverage.
-            </div>
-
-            <h2>Pattern 4: LiteLLM for Model Routing</h2>
-            <p>Different agents need different models. Routing uses fast/cheap models for classification, capable models for analysis, and fallback tiers when providers rate-limit. Centralized routing simplifies cost tracking and A/B testing.</p>
-
-            <h2>Pattern 5: ReAct + Reflection</h2>
-            <p>Agents loop: reason → act (tool) → observe → repeat. A reflection step after critical actions catches obvious errors before they propagate. "Does this finding match the evidence?" before writing to the report.</p>
-
-            <h2>Lessons Learned</h2>
-            <ul>
-                <li>Invest in observability early — trace every agent, tool call, and token spend</li>
-                <li>Version agent prompts like API contracts</li>
-                <li>Test agent handoffs as rigorously as unit tests</li>
-                <li>Keep human escalation paths for edge cases</li>
-            </ul>
+            <p>Supervisor/Router, parallel waves, checkpointing, and fault recovery.</p>
+            <h2>1. Supervisor Pattern</h2>
+            <p>Routes to specialists without executing tools directly.</p>
+            <h2>2. Parallel Waves</h2>
+            <p>Batch independent agents; checkpoint between dependent stages.</p>
+            <h2>3. LiteLLM Routing</h2>
+            <p>Fast models for classification, capable models for analysis.</p>
+            <p><em>Manjunath K G — AI/ML Trainee Engineer @ Ampcus Cyber · CEH v13 · Building agentic AI for security.</em></p>
         </div>
     </article>
-
-    <footer class="site-footer">
-        <p>&copy; 2026 Manjunath K G · <a href="index.html" style="color: var(--neon-blue);">More articles</a></p>
-    </footer>
+    <footer class="site-footer"><p>&copy; 2026 Manjunath K G · <a href="index.html" style="color: var(--neon-blue);">More articles</a></p></footer>
+    <script src="../js/nav.js"></script>
 </body>
 </html>
