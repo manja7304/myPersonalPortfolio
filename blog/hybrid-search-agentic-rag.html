@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hybrid Search for Agentic RAG — Manjunath K G</title>
+    <meta name="description" content="Combining vector search and BM25 keyword retrieval for production agentic RAG systems.">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/nav.css">
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="grid-overlay"></div>
+    <header class="main-nav" id="mainNav">
+        <a href="../index.html" class="nav-brand"><span class="nav-brand-icon">M</span><span class="nav-brand-text">Manjunath<span class="accent">.</span></span></a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <div class="nav-panel" id="navPanel">
+            <ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="index.html" class="active">Blog</a></li><li><a href="../index.html#contact">Contact</a></li></ul>
+            <a href="../CorrectResume.pdf" class="nav-resume-btn" download>Resume</a>
+        </div>
+    </header>
+    <article class="article-wrap">
+        <a href="index.html" class="back-link">← All articles</a>
+        <header class="article-header">
+            <div class="blog-tags"><span class="blog-tag">RAG</span><span class="blog-tag">Agentic AI</span></div>
+            <h1>Hybrid Search for Agentic RAG: Vectors + Keywords</h1>
+            <div class="article-meta"><span>Manjunath K G</span><span>May 2026</span><span>8 min read</span></div>
+        </header>
+        <div class="article-content">
+            <p>Pure vector search misses exact matches — CVE IDs, error codes, API endpoint paths. Pure keyword search misses semantic similarity. Production agentic RAG needs both.</p>
+
+            <h2>The Hybrid Pipeline</h2>
+            <ol>
+                <li><strong>Query analysis</strong> — agent decides if query is semantic, exact-match, or hybrid</li>
+                <li><strong>Parallel retrieval</strong> — embedding search (Pinecone/pgvector) + BM25 keyword index</li>
+                <li><strong>Reciprocal Rank Fusion</strong> — merge results without tuning arbitrary weights</li>
+                <li><strong>Reranking</strong> — cross-encoder or LLM reranker on top-k candidates</li>
+                <li><strong>Context assembly</strong> — dedupe, truncate, tag as untrusted</li>
+            </ol>
+
+            <h2>When Agents Choose Retrieval Strategy</h2>
+            <p>In agentic RAG, the agent doesn't just answer — it decides <em>what to search</em> and <em>how</em>. A security agent querying "CVE-2024-1234" should route to keyword search. A question about "authentication best practices" routes to semantic search.</p>
+
+            <h2>Chunking for Security Docs</h2>
+            <p>Security documentation has tables, code blocks, and config snippets. Chunk by logical sections, not fixed token windows. Preserve headers as metadata for filtered retrieval ("only search OWASP guides").</p>
+
+            <div class="callout">Hybrid search improved our RAGAS context precision scores significantly on technical queries with exact identifiers — the kind security workflows produce constantly.</div>
+
+            <h2>Storage Options</h2>
+            <ul>
+                <li><strong>pgvector + PostgreSQL full-text</strong> — single DB, good for moderate scale</li>
+                <li><strong>Pinecone + Elasticsearch</strong> — separate specialized indexes at scale</li>
+                <li><strong>Chroma</strong> — rapid prototyping with built-in hybrid support</li>
+            </ul>
+        </div>
+    </article>
+    <footer class="site-footer"><p>&copy; 2026 Manjunath K G · <a href="index.html" style="color: var(--neon-blue);">More articles</a></p></footer>
+    <script src="../js/nav.js"></script>
+</body>
+</html>

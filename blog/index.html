@@ -6,108 +6,164 @@
     <title>Blog — Manjunath K G | AI Engineering & LLM Security</title>
     <meta name="description" content="Articles on agentic AI, LLM security, RAG evaluation, MCP, and production ML engineering.">
     <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/nav.css">
 </head>
 <body>
     <div class="bg-animation"></div>
     <div class="grid-overlay"></div>
 
-    <nav class="site-nav">
-        <ul>
-            <li><a href="../index.html">Portfolio</a></li>
-            <li><a href="index.html" class="active">Blog</a></li>
-            <li><a href="../index.html#contact">Contact</a></li>
-        </ul>
-    </nav>
+    <header class="main-nav" id="mainNav">
+        <a href="../index.html" class="nav-brand">
+            <span class="nav-brand-icon">M</span>
+            <span class="nav-brand-text">Manjunath<span class="accent">.</span></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <div class="nav-panel" id="navPanel">
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="index.html" class="active">Blog</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <a href="../CorrectResume.pdf" class="nav-resume-btn" download>Resume</a>
+        </div>
+    </header>
 
     <header class="page-header">
-        <span class="eyebrow">Insights & Engineering Notes</span>
+        <span class="eyebrow">11 Articles · AI & Security</span>
         <h1>AI, ML & LLM Security Blog</h1>
         <p>Production lessons from building multi-agent systems, securing LLM pipelines, and shipping AI-powered security platforms.</p>
     </header>
 
     <div class="container">
+        <div class="blog-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="security">LLM Security</button>
+            <button class="filter-btn" data-filter="ai">Agentic AI</button>
+            <button class="filter-btn" data-filter="rag">RAG & MLOps</button>
+            <button class="filter-btn" data-filter="ops">LLM Ops</button>
+        </div>
+
         <div class="blog-grid">
-            <a href="llm-security-strategies.html" class="blog-card">
+            <a href="llm-security-strategies.html" class="blog-card" data-category="security">
                 <div class="blog-card-visual security">🛡️</div>
                 <div class="blog-card-body">
-                    <div class="blog-tags">
-                        <span class="blog-tag security">LLM Security</span>
-                        <span class="blog-tag">Production</span>
-                    </div>
+                    <div class="blog-tags"><span class="blog-tag security">LLM Security</span><span class="blog-tag">Production</span></div>
                     <h2>7 LLM Security Strategies for Production AI Systems</h2>
-                    <p>A defense-in-depth playbook covering prompt injection, tool abuse, data leakage, and agent guardrails — from real enterprise deployments.</p>
-                    <div class="blog-meta"><span>Jun 2026</span><span>12 min read</span></div>
-                    <span class="read-link">Read article →</span>
+                    <p>Defense-in-depth for prompt injection, tool abuse, data leakage, and agent guardrails.</p>
+                    <div class="blog-meta"><span>Jun 2026</span><span>12 min</span></div>
+                    <span class="read-link">Read →</span>
                 </div>
             </a>
 
-            <a href="prompt-injection-defense.html" class="blog-card">
+            <a href="owasp-llm-top-10-production.html" class="blog-card" data-category="security">
+                <div class="blog-card-visual security">📋</div>
+                <div class="blog-card-body">
+                    <div class="blog-tags"><span class="blog-tag security">OWASP</span><span class="blog-tag security">LLM Top 10</span></div>
+                    <h2>OWASP LLM Top 10: What It Means in Production</h2>
+                    <p>Mapping each OWASP LLM risk category to concrete engineering controls.</p>
+                    <div class="blog-meta"><span>Jun 2026</span><span>11 min</span></div>
+                    <span class="read-link">Read →</span>
+                </div>
+            </a>
+
+            <a href="prompt-injection-defense.html" class="blog-card" data-category="security">
                 <div class="blog-card-visual security">⚔️</div>
                 <div class="blog-card-body">
-                    <div class="blog-tags">
-                        <span class="blog-tag security">Red Team</span>
-                        <span class="blog-tag">AppSec</span>
-                    </div>
-                    <h2>Prompt Injection & AI Red Teaming: A Practical Defense Guide</h2>
-                    <p>How indirect injection, jailbreaks, and tool-hijacking attacks work — and the layered controls that actually stop them.</p>
-                    <div class="blog-meta"><span>Jun 2026</span><span>10 min read</span></div>
-                    <span class="read-link">Read article →</span>
+                    <div class="blog-tags"><span class="blog-tag security">Red Team</span><span class="blog-tag">AppSec</span></div>
+                    <h2>Prompt Injection & AI Red Teaming: A Defense Guide</h2>
+                    <p>Indirect injection, jailbreaks, tool hijacking — and layered controls that work.</p>
+                    <div class="blog-meta"><span>Jun 2026</span><span>10 min</span></div>
+                    <span class="read-link">Read →</span>
                 </div>
             </a>
 
-            <a href="multi-agent-orchestration.html" class="blog-card">
+            <a href="autonomous-pentesting-ai-agents.html" class="blog-card" data-category="security">
+                <div class="blog-card-visual security">🎯</div>
+                <div class="blog-card-body">
+                    <div class="blog-tags"><span class="blog-tag security">Pentesting</span><span class="blog-tag">Agentic AI</span></div>
+                    <h2>Building Autonomous Pentesting with AI Agents</h2>
+                    <p>Surface-specialized agents, evidence-first architecture, and OWASP WSTG alignment.</p>
+                    <div class="blog-meta"><span>Jun 2026</span><span>10 min</span></div>
+                    <span class="read-link">Read →</span>
+                </div>
+            </a>
+
+            <a href="multi-agent-orchestration.html" class="blog-card" data-category="ai">
                 <div class="blog-card-visual ai">🤖</div>
                 <div class="blog-card-body">
-                    <div class="blog-tags">
-                        <span class="blog-tag">Agentic AI</span>
-                        <span class="blog-tag">Temporal</span>
-                    </div>
+                    <div class="blog-tags"><span class="blog-tag">Agentic AI</span><span class="blog-tag">Temporal</span></div>
                     <h2>Orchestrating 60+ AI Agents: Patterns That Scale</h2>
-                    <p>Supervisor/Router, parallel waves, checkpointing, and fault recovery — lessons from building autonomous pentesting platforms.</p>
-                    <div class="blog-meta"><span>May 2026</span><span>11 min read</span></div>
-                    <span class="read-link">Read article →</span>
+                    <p>Supervisor/Router, parallel waves, checkpointing, and fault recovery.</p>
+                    <div class="blog-meta"><span>May 2026</span><span>11 min</span></div>
+                    <span class="read-link">Read →</span>
                 </div>
             </a>
 
-            <a href="rag-evaluation-ragas.html" class="blog-card">
+            <a href="temporal-ai-workflows.html" class="blog-card" data-category="ai">
+                <div class="blog-card-visual workflow">⏱️</div>
+                <div class="blog-card-body">
+                    <div class="blog-tags"><span class="blog-tag">Temporal</span><span class="blog-tag">Reliability</span></div>
+                    <h2>Temporal Workflows for Reliable AI Agent Pipelines</h2>
+                    <p>Durable execution, checkpointing between waves, and production lessons.</p>
+                    <div class="blog-meta"><span>May 2026</span><span>9 min</span></div>
+                    <span class="read-link">Read →</span>
+                </div>
+            </a>
+
+            <a href="langgraph-agent-patterns.html" class="blog-card" data-category="ai">
+                <div class="blog-card-visual framework">🔀</div>
+                <div class="blog-card-body">
+                    <div class="blog-tags"><span class="blog-tag">LangGraph</span><span class="blog-tag">Patterns</span></div>
+                    <h2>LangGraph Patterns: ReAct, Supervisor & Plan-and-Execute</h2>
+                    <p>Choosing the right agent graph structure for production multi-agent systems.</p>
+                    <div class="blog-meta"><span>Apr 2026</span><span>10 min</span></div>
+                    <span class="read-link">Read →</span>
+                </div>
+            </a>
+
+            <a href="rag-evaluation-ragas.html" class="blog-card" data-category="rag">
                 <div class="blog-card-visual rag">📊</div>
                 <div class="blog-card-body">
-                    <div class="blog-tags">
-                        <span class="blog-tag">RAG</span>
-                        <span class="blog-tag">MLOps</span>
-                    </div>
+                    <div class="blog-tags"><span class="blog-tag">RAG</span><span class="blog-tag">MLOps</span></div>
                     <h2>RAG Evaluation with RAGAS: Stop Shipping Broken Retrieval</h2>
-                    <p>Faithfulness, relevancy, and regression gates — how to measure RAG quality before users notice.</p>
-                    <div class="blog-meta"><span>May 2026</span><span>9 min read</span></div>
-                    <span class="read-link">Read article →</span>
+                    <p>Faithfulness, relevancy, and regression gates for production RAG.</p>
+                    <div class="blog-meta"><span>May 2026</span><span>9 min</span></div>
+                    <span class="read-link">Read →</span>
                 </div>
             </a>
 
-            <a href="mcp-security-best-practices.html" class="blog-card">
+            <a href="hybrid-search-agentic-rag.html" class="blog-card" data-category="rag">
+                <div class="blog-card-visual rag">🔍</div>
+                <div class="blog-card-body">
+                    <div class="blog-tags"><span class="blog-tag">RAG</span><span class="blog-tag">Hybrid Search</span></div>
+                    <h2>Hybrid Search for Agentic RAG: Vectors + Keywords</h2>
+                    <p>Combining embedding search and BM25 for security and technical queries.</p>
+                    <div class="blog-meta"><span>May 2026</span><span>8 min</span></div>
+                    <span class="read-link">Read →</span>
+                </div>
+            </a>
+
+            <a href="mcp-security-best-practices.html" class="blog-card" data-category="security">
                 <div class="blog-card-visual mcp">🔌</div>
                 <div class="blog-card-body">
-                    <div class="blog-tags">
-                        <span class="blog-tag security">MCP</span>
-                        <span class="blog-tag">GRC</span>
-                    </div>
+                    <div class="blog-tags"><span class="blog-tag security">MCP</span><span class="blog-tag">GRC</span></div>
                     <h2>Securing MCP Servers: Tool Access Control for AI Agents</h2>
-                    <p>Building AWS MCP servers with 70+ tools taught me where agents break trust boundaries — and how to fix it.</p>
-                    <div class="blog-meta"><span>Apr 2026</span><span>10 min read</span></div>
-                    <span class="read-link">Read article →</span>
+                    <p>70+ cloud tools, credential isolation, and audit logging for MCP servers.</p>
+                    <div class="blog-meta"><span>Apr 2026</span><span>10 min</span></div>
+                    <span class="read-link">Read →</span>
                 </div>
             </a>
 
-            <a href="llm-cost-optimization.html" class="blog-card">
+            <a href="llm-cost-optimization.html" class="blog-card" data-category="ops">
                 <div class="blog-card-visual ops">💰</div>
                 <div class="blog-card-body">
-                    <div class="blog-tags">
-                        <span class="blog-tag">LLM Ops</span>
-                        <span class="blog-tag">Cost</span>
-                    </div>
+                    <div class="blog-tags"><span class="blog-tag">LLM Ops</span><span class="blog-tag">Cost</span></div>
                     <h2>Cutting LLM Token Costs by 30% Without Sacrificing Quality</h2>
-                    <p>Prompt scaffolds, model-tier routing, caching, and evaluation-driven tuning for enterprise-scale pipelines.</p>
-                    <div class="blog-meta"><span>Apr 2026</span><span>8 min read</span></div>
-                    <span class="read-link">Read article →</span>
+                    <p>Model-tier routing, caching, and evaluation-driven prompt tuning.</p>
+                    <div class="blog-meta"><span>Apr 2026</span><span>8 min</span></div>
+                    <span class="read-link">Read →</span>
                 </div>
             </a>
         </div>
@@ -116,5 +172,6 @@
     <footer class="site-footer">
         <p>&copy; 2026 Manjunath K G · <a href="../index.html" style="color: var(--neon-blue);">Back to Portfolio</a></p>
     </footer>
+    <script src="../js/nav.js"></script>
 </body>
 </html>

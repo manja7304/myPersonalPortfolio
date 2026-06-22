@@ -6,6 +6,7 @@
     <title>Manjunath K G - AI/ML Trainee Engineer & Security</title>
     <meta name="description" content="AI/ML Trainee Engineer at Ampcus Cyber. Agentic AI, autonomous pentesting, MCP, RAG, LLM security, and cyber security.">
     <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/nav.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
         
@@ -151,72 +152,7 @@
         }
 
         nav {
-            position: fixed;
-            top: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(15, 23, 42, 0.4);
-            backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 0.8rem 1.5rem;
-            border-radius: 100px;
-            z-index: 1000;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-            animation: navSlideDown 1s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        @keyframes navSlideDown {
-            0% {
-                opacity: 0;
-                transform: translateX(-50%) translateY(-100px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(-50%) translateY(0);
-            }
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-        nav a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            padding: 0.6rem 1.2rem;
-            display: block;
-            border-radius: 50px;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        nav a::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 50px;
-            background: linear-gradient(135deg, var(--neon-blue), var(--neon-pink));
-            opacity: 0;
-            transition: opacity 0.3s;
-            z-index: -1;
-        }
-
-        nav a:hover {
-            color: #fff;
-        }
-
-        nav a:hover::before {
-            opacity: 1;
-        }
-
-        nav a.active {
-            color: #fff;
-            background: rgba(0, 212, 255, 0.1);
+            display: none;
         }
 
         .hero {
@@ -226,7 +162,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 2rem;
+            padding: 6rem 2rem 2rem;
             position: relative;
         }
 
@@ -1212,16 +1148,6 @@
         }
 
         @media (max-width: 768px) {
-            nav {
-                width: 90%;
-                padding: 0.8rem 1rem;
-            }
-
-            nav a {
-                padding: 0.5rem 0.8rem;
-                font-size: 0.8rem;
-            }
-
             .about-grid {
                 grid-template-columns: 1fr;
             }
@@ -1257,19 +1183,38 @@
     <div class="orb orb2"></div>
     <div class="orb orb3"></div>
 
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#ai">AI</a></li>
-            <li><a href="#security">Security</a></li>
-            <li><a href="#contributions">Work</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#blog">Blog</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+    <header class="main-nav" id="mainNav">
+        <a href="#home" class="nav-brand">
+            <span class="nav-brand-icon">M</span>
+            <span class="nav-brand-text">Manjunath<span class="accent">.</span></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-panel" id="navPanel">
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li class="nav-dropdown">
+                    <button class="nav-dropdown-btn" type="button">Expertise</button>
+                    <ul class="nav-dropdown-menu">
+                        <li><a href="#ai">AI Engineering</a></li>
+                        <li><a href="#security">Cyber Security</a></li>
+                    </ul>
+                </li>
+                <li class="nav-dropdown">
+                    <button class="nav-dropdown-btn" type="button">Work</button>
+                    <ul class="nav-dropdown-menu">
+                        <li><a href="#contributions">Contributions</a></li>
+                        <li><a href="#experience">Experience</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                    </ul>
+                </li>
+                <li><a href="blog/index.html">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#" class="nav-resume-btn" onclick="downloadResume(); return false;">Resume</a>
+        </div>
+    </header>
 
     <section class="hero" id="home">
         <div class="hero-label">AI/ML Trainee Engineer · CEH v13 · Available for Opportunities</div>
@@ -1632,22 +1577,40 @@
                 <div class="blog-meta" style="margin-top: 1.5rem; border: none; padding: 0;"><span>12 min read</span><span>Jun 2026</span></div>
             </a>
             <div class="featured-blog-side">
-                <a href="blog/prompt-injection-defense.html" class="mini-blog-card">
-                    <h4>Prompt Injection & AI Red Teaming</h4>
-                    <span>Security · 10 min read</span>
+                <a href="blog/owasp-llm-top-10-production.html" class="mini-blog-card">
+                    <h4>OWASP LLM Top 10 in Production</h4>
+                    <span>Security · 11 min read</span>
                 </a>
-                <a href="blog/multi-agent-orchestration.html" class="mini-blog-card">
-                    <h4>Orchestrating 60+ AI Agents</h4>
-                    <span>Agentic AI · 11 min read</span>
+                <a href="blog/autonomous-pentesting-ai-agents.html" class="mini-blog-card">
+                    <h4>Autonomous Pentesting with AI Agents</h4>
+                    <span>Agentic AI · 10 min read</span>
                 </a>
-                <a href="blog/rag-evaluation-ragas.html" class="mini-blog-card">
-                    <h4>RAG Evaluation with RAGAS</h4>
-                    <span>MLOps · 9 min read</span>
+                <a href="blog/temporal-ai-workflows.html" class="mini-blog-card">
+                    <h4>Temporal Workflows for AI Agents</h4>
+                    <span>Reliability · 9 min read</span>
                 </a>
             </div>
         </div>
 
         <div class="blog-grid">
+            <a href="blog/owasp-llm-top-10-production.html" class="blog-card">
+                <div class="blog-card-visual security">📋</div>
+                <div class="blog-card-body">
+                    <div class="blog-tags"><span class="blog-tag security">OWASP</span><span class="blog-tag security">LLM Top 10</span></div>
+                    <h2>OWASP LLM Top 10 in Production</h2>
+                    <p>Mapping each OWASP LLM risk to concrete engineering controls for enterprise AI.</p>
+                    <div class="blog-meta"><span>Jun 2026</span><span>11 min</span></div>
+                </div>
+            </a>
+            <a href="blog/autonomous-pentesting-ai-agents.html" class="blog-card">
+                <div class="blog-card-visual security">🎯</div>
+                <div class="blog-card-body">
+                    <div class="blog-tags"><span class="blog-tag security">Pentesting</span><span class="blog-tag">Agents</span></div>
+                    <h2>Autonomous Pentesting with AI Agents</h2>
+                    <p>Surface-specialized agents, evidence-first design, and OWASP WSTG coverage.</p>
+                    <div class="blog-meta"><span>Jun 2026</span><span>10 min</span></div>
+                </div>
+            </a>
             <a href="blog/mcp-security-best-practices.html" class="blog-card">
                 <div class="blog-card-visual mcp">🔌</div>
                 <div class="blog-card-body">
@@ -1675,10 +1638,37 @@
                     <div class="blog-meta"><span>Jun 2026</span><span>10 min</span></div>
                 </div>
             </a>
+            <a href="blog/temporal-ai-workflows.html" class="blog-card">
+                <div class="blog-card-visual workflow">⏱️</div>
+                <div class="blog-card-body">
+                    <div class="blog-tags"><span class="blog-tag">Temporal</span><span class="blog-tag">Reliability</span></div>
+                    <h2>Temporal Workflows for AI Agents</h2>
+                    <p>Durable execution, checkpointing, and fault recovery for agent pipelines.</p>
+                    <div class="blog-meta"><span>May 2026</span><span>9 min</span></div>
+                </div>
+            </a>
+            <a href="blog/langgraph-agent-patterns.html" class="blog-card">
+                <div class="blog-card-visual framework">🔀</div>
+                <div class="blog-card-body">
+                    <div class="blog-tags"><span class="blog-tag">LangGraph</span><span class="blog-tag">Patterns</span></div>
+                    <h2>LangGraph Agent Patterns</h2>
+                    <p>ReAct, Supervisor, and Plan-and-Execute — when to use each.</p>
+                    <div class="blog-meta"><span>Apr 2026</span><span>10 min</span></div>
+                </div>
+            </a>
+            <a href="blog/hybrid-search-agentic-rag.html" class="blog-card">
+                <div class="blog-card-visual rag">🔍</div>
+                <div class="blog-card-body">
+                    <div class="blog-tags"><span class="blog-tag">RAG</span><span class="blog-tag">Hybrid Search</span></div>
+                    <h2>Hybrid Search for Agentic RAG</h2>
+                    <p>Vectors + BM25 for technical and security queries with exact identifiers.</p>
+                    <div class="blog-meta"><span>May 2026</span><span>8 min</span></div>
+                </div>
+            </a>
         </div>
 
         <div class="blog-cta">
-            <a href="blog/index.html" class="btn btn-primary">View All Articles →</a>
+            <a href="blog/index.html" class="btn btn-primary">View All 11 Articles →</a>
         </div>
     </section>
 
@@ -1729,14 +1719,6 @@
         }
         createParticles();
 
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-        });
-
         function downloadResume() {
             const link = document.createElement('a');
             link.href = 'CorrectResume.pdf';
@@ -1764,18 +1746,7 @@
             section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
             observer.observe(section);
         });
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            document.querySelectorAll('section').forEach(section => {
-                if (window.pageYOffset >= section.offsetTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-            document.querySelectorAll('nav a').forEach(a => {
-                a.classList.toggle('active', a.getAttribute('href') === `#${current}`);
-            });
-        });
     </script>
+    <script src="js/nav.js"></script>
 </body>
 </html>

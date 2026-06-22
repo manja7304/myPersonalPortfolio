@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OWASP LLM Top 10 in Production — Manjunath K G</title>
+    <meta name="description" content="Mapping OWASP LLM Top 10 risks to production controls for enterprise AI systems and agentic platforms.">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/nav.css">
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="grid-overlay"></div>
+
+    <header class="main-nav" id="mainNav">
+        <a href="../index.html" class="nav-brand">
+            <span class="nav-brand-icon">M</span>
+            <span class="nav-brand-text">Manjunath<span class="accent">.</span></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <div class="nav-panel" id="navPanel">
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="index.html" class="active">Blog</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <a href="../CorrectResume.pdf" class="nav-resume-btn" download>Resume</a>
+        </div>
+    </header>
+
+    <article class="article-wrap">
+        <a href="index.html" class="back-link">← All articles</a>
+        <header class="article-header">
+            <div class="blog-tags">
+                <span class="blog-tag security">OWASP</span>
+                <span class="blog-tag security">LLM Security</span>
+            </div>
+            <h1>OWASP LLM Top 10: What It Means in Production</h1>
+            <div class="article-meta"><span>Manjunath K G</span><span>June 2026</span><span>11 min read</span></div>
+        </header>
+        <div class="article-content">
+            <p>OWASP's LLM Top 10 gives security teams a shared vocabulary for AI risk. But a checklist on paper doesn't protect production — mapped controls do. Here's how we translate each category into engineering decisions on our autonomous pentesting platform.</p>
+
+            <h2>LLM01: Prompt Injection</h2>
+            <p><strong>Risk:</strong> User or retrieved content overrides system instructions.<br><strong>Control:</strong> Instruction hierarchy, untrusted context tagging, dual-LLM guardrails, structured tool invocation only.</p>
+
+            <h2>LLM02: Insecure Output Handling</h2>
+            <p><strong>Risk:</strong> LLM output passed to shell, SQL, or HTML without sanitization.<br><strong>Control:</strong> Schema-validated JSON outputs, no direct execution of model text, encode before render.</p>
+
+            <h2>LLM03: Training Data Poisoning</h2>
+            <p><strong>Risk:</strong> Corrupted fine-tuning data introduces backdoors.<br><strong>Control:</strong> Curated datasets, provenance tracking, eval regression gates before deployment.</p>
+
+            <h2>LLM04: Model Denial of Service</h2>
+            <p><strong>Risk:</strong> Resource exhaustion via long inputs or agent loops.<br><strong>Control:</strong> Token budgets, rate limits, Temporal timeouts, circuit breakers on agent workflows.</p>
+
+            <h2>LLM05: Supply Chain Vulnerabilities</h2>
+            <p><strong>Risk:</strong> Compromised models, plugins, or dependencies.<br><strong>Control:</strong> Pin model versions, vet MCP servers, dependency scanning in CI.</p>
+
+            <h2>LLM06: Sensitive Information Disclosure</h2>
+            <p><strong>Risk:</strong> PII, credentials, or client data in prompts/responses.<br><strong>Control:</strong> Redaction pipelines, tenant isolation, log scrubbing, least-privilege retrieval.</p>
+
+            <h2>LLM07: Insecure Plugin Design</h2>
+            <p><strong>Risk:</strong> Over-permissioned tools agents can abuse.<br><strong>Control:</strong> Tool allowlists per agent, parameter validation, read-only defaults on MCP servers.</p>
+
+            <h2>LLM08: Excessive Agency</h2>
+            <p><strong>Risk:</strong> Agents take high-impact actions without human approval.<br><strong>Control:</strong> Human-in-the-loop for destructive ops, scoped autonomy per workflow stage.</p>
+
+            <h2>LLM09: Overreliance</h2>
+            <p><strong>Risk:</strong> Users trust hallucinated security findings.<br><strong>Control:</strong> Evidence-linked reports, confidence scores, mandatory source citations via RAGAS faithfulness checks.</p>
+
+            <h2>LLM10: Model Theft</h2>
+            <p><strong>Risk:</strong> Proprietary prompts or weights extracted.<br><strong>Control:</strong> API rate limiting, prompt obfuscation where feasible, watermarking on sensitive outputs.</p>
+
+            <div class="callout">
+                <strong>Practical takeaway:</strong> Don't treat OWASP LLM Top 10 as a compliance checkbox. Use it as a threat model backbone and assign an owner + automated test for each item in your CI pipeline.
+            </div>
+        </div>
+    </article>
+    <footer class="site-footer"><p>&copy; 2026 Manjunath K G · <a href="index.html" style="color: var(--neon-blue);">More articles</a></p></footer>
+    <script src="../js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LangGraph Agent Patterns — Manjunath K G</title>
+    <meta name="description" content="ReAct, Supervisor, and Plan-and-Execute patterns in LangGraph for production multi-agent systems.">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/nav.css">
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="grid-overlay"></div>
+    <header class="main-nav" id="mainNav">
+        <a href="../index.html" class="nav-brand"><span class="nav-brand-icon">M</span><span class="nav-brand-text">Manjunath<span class="accent">.</span></span></a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <div class="nav-panel" id="navPanel">
+            <ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="index.html" class="active">Blog</a></li><li><a href="../index.html#contact">Contact</a></li></ul>
+            <a href="../CorrectResume.pdf" class="nav-resume-btn" download>Resume</a>
+        </div>
+    </header>
+    <article class="article-wrap">
+        <a href="index.html" class="back-link">← All articles</a>
+        <header class="article-header">
+            <div class="blog-tags"><span class="blog-tag">LangGraph</span><span class="blog-tag">Agentic AI</span></div>
+            <h1>LangGraph Patterns: ReAct, Supervisor & Plan-and-Execute</h1>
+            <div class="article-meta"><span>Manjunath K G</span><span>Apr 2026</span><span>10 min read</span></div>
+        </header>
+        <div class="article-content">
+            <p>LangGraph models agents as state machines — nodes are functions, edges are transitions. This makes complex multi-agent behavior testable, debuggable, and version-controllable compared to ad-hoc while-loops.</p>
+
+            <h2>ReAct Loop</h2>
+            <p>The workhorse pattern: <strong>Reason → Act → Observe → Repeat</strong>. Best for tool-heavy tasks with clear stopping conditions.</p>
+            <pre>graph: START → agent → should_continue?
+         ↑                    ↓
+         └── tools ←──────── yes/no → END</pre>
+            <p>Use when: single-domain tasks, bounded tool sets, predictable iteration counts.</p>
+
+            <h2>Supervisor / Router</h2>
+            <p>A supervisor node reads the task and routes to specialist sub-graphs. Each specialist is its own compiled LangGraph with isolated tools.</p>
+            <p>Use when: multi-domain platforms (web + API + cloud), different expertise per surface, need centralized policy enforcement at the router.</p>
+
+            <h2>Plan-and-Execute</h2>
+            <p>Planner generates a step list upfront; executor runs each step sequentially with replanning on failure. Reduces wasted tool calls from reactive loops.</p>
+            <p>Use when: long-horizon tasks (full pentest engagement), cost-sensitive workflows, auditable step-by-step execution logs required.</p>
+
+            <h2>Reflection Node</h2>
+            <p>After critical steps, a reflection node evaluates output quality: "Is this finding supported by evidence? Is the report section complete?" Catches errors before they compound.</p>
+
+            <h2>Choosing a Pattern</h2>
+            <ul>
+                <li><strong>Simple Q&A with tools</strong> → ReAct</li>
+                <li><strong>Multi-surface platform</strong> → Supervisor</li>
+                <li><strong>Long sequential workflows</strong> → Plan-and-Execute</li>
+                <li><strong>High-stakes outputs</strong> → Add Reflection to any pattern</li>
+            </ul>
+
+            <div class="callout warning">Don't over-graph. A 3-node ReAct loop beats a 20-node graph you can't debug. Add complexity only when simpler patterns fail eval metrics.</div>
+        </div>
+    </article>
+    <footer class="site-footer"><p>&copy; 2026 Manjunath K G · <a href="index.html" style="color: var(--neon-blue);">More articles</a></p></footer>
+    <script src="../js/nav.js"></script>
+</body>
+</html>
