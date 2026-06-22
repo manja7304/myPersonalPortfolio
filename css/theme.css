@@ -210,6 +210,16 @@ a, button, .blog-card, .mini-blog-card, .featured-blog-main {
     font-size: 1.35rem;
     line-height: 1.35;
     margin-bottom: 0.75rem;
+    text-align: left;
+    font-weight: 600;
+    color: #fff;
+    background: none;
+    -webkit-text-fill-color: #fff;
+    position: static;
+}
+
+.blog-card h2::after {
+    display: none;
 }
 
 .blog-card p {
