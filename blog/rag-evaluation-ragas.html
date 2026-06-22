@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Evaluation with RAGAS — Manjunath K G</title>
+    <meta name="description" content="How to evaluate RAG pipelines with RAGAS: faithfulness, relevancy metrics, and regression gates for production LLM systems.">
+    <link rel="stylesheet" href="../css/theme.css">
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="grid-overlay"></div>
+
+    <nav class="site-nav">
+        <ul>
+            <li><a href="../index.html">Portfolio</a></li>
+            <li><a href="index.html">Blog</a></li>
+        </ul>
+    </nav>
+
+    <article class="article-wrap">
+        <a href="index.html" class="back-link">← All articles</a>
+
+        <header class="article-header">
+            <div class="blog-tags">
+                <span class="blog-tag">RAG</span>
+                <span class="blog-tag">MLOps</span>
+                <span class="blog-tag">Evaluation</span>
+            </div>
+            <h1>RAG Evaluation with RAGAS: Stop Shipping Broken Retrieval</h1>
+            <div class="article-meta">
+                <span>Manjunath K G</span>
+                <span>May 2026</span>
+                <span>9 min read</span>
+            </div>
+        </header>
+
+        <div class="article-content">
+            <p>RAG failures are silent. The model responds confidently with wrong information, citing documents that don't support the claim. Users trust it because it sounds authoritative. RAGAS gives you numbers before your customers find the bugs.</p>
+
+            <h2>Core Metrics</h2>
+            <ul>
+                <li><strong>Faithfulness</strong> — Is the answer grounded in retrieved context, or hallucinated?</li>
+                <li><strong>Answer Relevancy</strong> — Does the response actually address the question?</li>
+                <li><strong>Context Precision</strong> — Are retrieved chunks relevant to the query?</li>
+                <li><strong>Context Recall</strong> — Did retrieval find the information needed to answer?</li>
+            </ul>
+
+            <h2>Building an Evaluation Pipeline</h2>
+            <pre># Simplified evaluation flow
+test_set = load_golden_qa_pairs()  # question + expected sources
+for case in test_set:
+    chunks = retriever.search(case.question)
+    answer = generator(chunks, case.question)
+    scores = ragas.evaluate(case, chunks, answer)
+    log_to_dashboard(scores)</pre>
+
+            <h2>When to Run Evaluations</h2>
+            <ol>
+                <li>Before deploying prompt changes</li>
+                <li>After embedding model or vector store updates</li>
+                <li>When switching LLM providers or model tiers</li>
+                <li>Weekly on a held-out regression set</li>
+            </ol>
+
+            <h2>Regression Gates in CI</h2>
+            <p>Set thresholds: faithfulness ≥ 0.85, relevancy ≥ 0.80. Block merges that drop metrics below baseline. We improved both by ~30% through iterative prompt tuning — but only because we measured before and after.</p>
+
+            <div class="callout">
+                <strong>Pro tip:</strong> Build golden datasets from real user queries (anonymized) and known failure cases. Synthetic-only eval sets miss production edge cases.
+            </div>
+
+            <h2>Beyond RAGAS</h2>
+            <p>Combine automated metrics with human review for high-stakes outputs (security findings, compliance reports). RAGAS catches retrieval drift; humans catch domain nonsense that scores well but misleads experts.</p>
+
+            <h2>Agentic RAG Considerations</h2>
+            <p>When agents decide what to retrieve and when, evaluate the full trajectory — not just final answers. Did the agent retrieve before answering? Did it over-retrieve sensitive context? Multi-step agent eval is harder but essential for production agentic RAG.</p>
+        </div>
+    </article>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Manjunath K G · <a href="index.html" style="color: var(--neon-blue);">More articles</a></p>
+    </footer>
+</body>
+</html>

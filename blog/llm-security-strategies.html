@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 LLM Security Strategies for Production AI Systems — Manjunath K G</title>
+    <meta name="description" content="Defense-in-depth LLM security strategies for production AI: prompt injection, tool abuse, data leakage, and agent guardrails.">
+    <link rel="stylesheet" href="../css/theme.css">
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="grid-overlay"></div>
+
+    <nav class="site-nav">
+        <ul>
+            <li><a href="../index.html">Portfolio</a></li>
+            <li><a href="index.html">Blog</a></li>
+        </ul>
+    </nav>
+
+    <article class="article-wrap">
+        <a href="index.html" class="back-link">← All articles</a>
+
+        <header class="article-header">
+            <div class="blog-tags">
+                <span class="blog-tag security">LLM Security</span>
+                <span class="blog-tag">Production</span>
+                <span class="blog-tag">Agentic AI</span>
+            </div>
+            <h1>7 LLM Security Strategies for Production AI Systems</h1>
+            <div class="article-meta">
+                <span>Manjunath K G</span>
+                <span>June 2026</span>
+                <span>12 min read</span>
+            </div>
+        </header>
+
+        <div class="article-content">
+            <p>Shipping LLMs in production is no longer a research exercise. When your platform runs 60+ specialized agents against client infrastructure, a single missed guardrail can mean credential exposure, unauthorized tool execution, or poisoned reports delivered to enterprise customers.</p>
+
+            <p>These seven strategies come from building autonomous security assessment platforms where AI agents interact with live APIs, cloud accounts, and sensitive compliance data.</p>
+
+            <h2>1. Treat the LLM as an Untrusted Component</h2>
+            <p>The model is not your security boundary — your architecture is. Never assume the LLM will refuse a malicious instruction. Design every downstream action to require explicit authorization, schema validation, and scope checks independent of model output.</p>
+
+            <div class="callout">
+                <strong>Rule of thumb:</strong> If an agent can call a tool, that tool must enforce its own permissions. The LLM only proposes actions; the runtime approves them.
+            </div>
+
+            <h2>2. Layer Input Sanitization and Instruction Hierarchy</h2>
+            <p>Separate system instructions from user content with clear delimiters. Use structured prompts with fixed roles:</p>
+            <ul>
+                <li><strong>System layer</strong> — immutable policy, tool constraints, output format</li>
+                <li><strong>Context layer</strong> — retrieved documents tagged as untrusted data</li>
+                <li><strong>User layer</strong> — treated as potentially adversarial input</li>
+            </ul>
+            <p>When RAG retrieves external content, wrap it explicitly: <code>&lt;untrusted_context&gt;...&lt;/untrusted_context&gt;</code> so the model knows not to follow instructions embedded in documents.</p>
+
+            <h2>3. Implement Tool Allowlists and Least Privilege</h2>
+            <p>Each agent should receive only the tools it needs for its task surface. A web-scanning agent doesn't need cloud MCP tools. An AWS evidence agent shouldn't invoke report-deletion APIs.</p>
+            <pre>agent_config = {
+    "web_agent": {"tools": ["http_probe", "form_analyze", "xss_check"]},
+    "grc_agent": {"tools": ["aws_list_buckets", "fetch_policy_doc"]},
+    "supervisor": {"tools": ["delegate", "aggregate", "status"]}
+}</pre>
+
+            <h2>4. Output Validation Before Side Effects</h2>
+            <p>Parse all LLM outputs through strict schemas (JSON Schema, Pydantic models) before triggering workflows. Reject malformed responses, hallucinated tool names, and out-of-scope parameters. For security reports, validate that findings reference evidence IDs that actually exist in your store.</p>
+
+            <h2>5. Rate Limit, Budget, and Circuit-Break Agent Loops</h2>
+            <p>Agentic systems can spiral — an confused agent calling tools in a loop burns tokens and can amplify damage. Set per-session token budgets, max tool calls per workflow, and Temporal-level timeouts with checkpoint recovery.</p>
+
+            <h2>6. Log Everything: Prompts, Tools, and Decisions</h2>
+            <p>Security incidents in AI systems require audit trails. Log prompt hashes, tool invocations with parameters (redacted), model versions, and latency. Integrate with your existing SIEM. When a client asks "why did the agent access this resource?", you need an answer.</p>
+
+            <h2>7. Continuous Red Teaming and RAGAS-Style Evaluation</h2>
+            <p>Run automated adversarial test suites against your agents weekly. Test for prompt injection via retrieved content, tool parameter manipulation, and privilege escalation across agent handoffs. Pair offensive tests with RAGAS metrics to catch quality regressions that often correlate with security failures (e.g., faithfulness drops when injection succeeds).</p>
+
+            <div class="callout warning">
+                <strong>Bottom line:</strong> LLM security is systems security. The teams that win combine AppSec mindset with MLOps discipline — not bolt-on filters after launch.
+            </div>
+
+            <p><em>Manjunath K G is an AI/ML Trainee Engineer at Ampcus Cyber, CEH v13 certified, building production multi-agent security platforms.</em></p>
+        </div>
+    </article>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Manjunath K G · <a href="index.html" style="color: var(--neon-blue);">More articles</a></p>
+    </footer>
+</body>
+</html>

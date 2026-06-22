@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Securing MCP Servers — Manjunath K G</title>
+    <meta name="description" content="MCP server security best practices: tool access control, credential isolation, and audit logging for AI agents.">
+    <link rel="stylesheet" href="../css/theme.css">
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="grid-overlay"></div>
+
+    <nav class="site-nav">
+        <ul>
+            <li><a href="../index.html">Portfolio</a></li>
+            <li><a href="index.html">Blog</a></li>
+        </ul>
+    </nav>
+
+    <article class="article-wrap">
+        <a href="index.html" class="back-link">← All articles</a>
+
+        <header class="article-header">
+            <div class="blog-tags">
+                <span class="blog-tag security">MCP</span>
+                <span class="blog-tag">Cloud Security</span>
+                <span class="blog-tag">GRC</span>
+            </div>
+            <h1>Securing MCP Servers: Tool Access Control for AI Agents</h1>
+            <div class="article-meta">
+                <span>Manjunath K G</span>
+                <span>April 2026</span>
+                <span>10 min read</span>
+            </div>
+        </header>
+
+        <div class="article-content">
+            <p>Model Context Protocol (MCP) turns LLMs into systems that act on the world — read S3 buckets, pull Jira tickets, scan GitHub repos. Building an AWS MCP server with 70+ tools for GRC evidence collection taught me that MCP is a new attack surface, not just integration glue.</p>
+
+            <h2>The Trust Problem</h2>
+            <p>An MCP server exposes capabilities. An agent decides when to invoke them. A malicious or confused agent can exfiltrate data, modify resources, or chain tools in unintended ways. The server must assume the caller is untrusted.</p>
+
+            <h2>Security Principles for MCP Servers</h2>
+
+            <h3>1. Read-Only by Default</h3>
+            <p>GRC evidence collection rarely needs write access. Expose list/describe/get operations. Require separate elevated scopes — with human approval — for mutating tools.</p>
+
+            <h3>2. Credential Isolation</h3>
+            <p>MCP servers should use short-lived, scoped credentials per tenant. Never share a root AWS key across clients. Map agent sessions to IAM roles with minimal permissions.</p>
+
+            <h3>3. Parameter Validation</h3>
+            <pre>def list_buckets(region: str, prefix: str | None = None):
+    if region not in ALLOWED_REGIONS:
+        raise PermissionError("Region not in scope")
+    if prefix and ".." in prefix:
+        raise ValueError("Invalid prefix")</pre>
+
+            <h3>4. Audit Every Invocation</h3>
+            <p>Log tool name, tenant ID, parameters (redacted), timestamp, and calling agent ID. Feed into your GRC audit trail — clients will ask.</p>
+
+            <h3>5. Rate Limiting & Quotas</h3>
+            <p>Prevent runaway agents from hammering cloud APIs or racking up costs. Per-session and per-tenant limits.</p>
+
+            <h2>Multi-Cloud MCP Architecture</h2>
+            <p>We extended evidence collection across AWS, Azure, GCP, Jira, and GitHub via dedicated MCP agents. Each domain gets its own server process with isolated credentials. A composite orchestrator agent coordinates them but cannot bypass per-server policies.</p>
+
+            <div class="callout warning">
+                <strong>Common mistake:</strong> One mega-MCP server with every tool and one admin credential. Split by domain and privilege level.
+            </div>
+
+            <h2>Testing MCP Security</h2>
+            <ul>
+                <li>Fuzz tool parameters with injection payloads</li>
+                <li>Attempt cross-tenant access with swapped session tokens</li>
+                <li>Red-team agent prompts that chain benign tools into harmful sequences</li>
+                <li>Verify credential rotation and revocation paths</li>
+            </ul>
+
+            <p>MCP is how agents touch production systems. Secure it like an API gateway — because that's what it is.</p>
+        </div>
+    </article>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Manjunath K G · <a href="index.html" style="color: var(--neon-blue);">More articles</a></p>
+    </footer>
+</body>
+</html>

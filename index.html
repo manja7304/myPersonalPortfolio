@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manjunath K G - AI/ML Trainee Engineer & Security</title>
-    <meta name="description" content="AI/ML Trainee Engineer at Ampcus Cyber. Agentic AI, autonomous pentesting, MCP, RAG, and cyber security.">
+    <meta name="description" content="AI/ML Trainee Engineer at Ampcus Cyber. Agentic AI, autonomous pentesting, MCP, RAG, LLM security, and cyber security.">
+    <link rel="stylesheet" href="css/theme.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
         
@@ -1104,6 +1105,142 @@
         .code-snippet .kw { color: var(--neon-pink); }
         .code-snippet .str { color: var(--neon-blue); }
 
+        .section-intro {
+            text-align: center;
+            max-width: 640px;
+            margin: -2.5rem auto 3.5rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.05rem;
+            line-height: 1.75;
+        }
+
+        .featured-blog {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .featured-blog-main {
+            background: linear-gradient(135deg, rgba(255,45,149,0.08), rgba(0,212,255,0.08));
+            border: 1px solid rgba(255, 45, 149, 0.2);
+            border-radius: 28px;
+            padding: 2.5rem;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.4s;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-blog-main::after {
+            content: 'Featured';
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 0.35rem 0.85rem;
+            border-radius: 50px;
+            background: var(--gradient);
+            color: #0a0e27;
+        }
+
+        .featured-blog-main:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 70px rgba(255, 45, 149, 0.15);
+            border-color: rgba(255, 45, 149, 0.4);
+        }
+
+        .featured-blog-main h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.75rem;
+            margin: 1rem 0;
+            line-height: 1.3;
+        }
+
+        .featured-blog-main p {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+        }
+
+        .featured-blog-side {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .mini-blog-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
+            padding: 1.25rem 1.5rem;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s;
+            flex: 1;
+        }
+
+        .mini-blog-card:hover {
+            border-color: rgba(0,212,255,0.3);
+            transform: translateX(8px);
+        }
+
+        .mini-blog-card h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .mini-blog-card span {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.45);
+        }
+
+        .blog-cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .blog-cta .btn {
+            display: inline-block;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255,255,255,0.35);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-hint::after {
+            content: '';
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--neon-blue), transparent);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        @media (max-width: 768px) {
+            .featured-blog { grid-template-columns: 1fr; }
+        }
+
         @media (max-width: 768px) {
             .cursor, .cursor-follower {
                 display: none;
@@ -1166,6 +1303,7 @@
             <li><a href="#contributions">Work</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#projects">Projects</a></li>
+            <li><a href="#blog">Blog</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
@@ -1186,9 +1324,11 @@
         </p>
         <div class="cta-buttons">
             <a href="#projects" class="btn btn-primary">View Projects</a>
+            <a href="blog/index.html" class="btn">Read Blog</a>
             <a href="#contact" class="btn">Get In Touch</a>
             <a href="#" onclick="downloadResume(); return false;" class="btn">Download Resume</a>
         </div>
+        <div class="scroll-hint">Scroll</div>
     </section>
 
     <section id="about">
@@ -1511,6 +1651,71 @@
                     View on GitHub
                 </a>
             </div>
+        </div>
+    </section>
+
+    <section id="blog">
+        <h2>Blog & Insights</h2>
+        <p class="section-intro">Deep dives on agentic AI, LLM security, RAG evaluation, and production ML engineering — written from the trenches of enterprise AI platforms.</p>
+
+        <div class="featured-blog">
+            <a href="blog/llm-security-strategies.html" class="featured-blog-main">
+                <div class="blog-tags">
+                    <span class="blog-tag security">LLM Security</span>
+                    <span class="blog-tag">Featured</span>
+                </div>
+                <h3>7 LLM Security Strategies for Production AI Systems</h3>
+                <p>Defense-in-depth for prompt injection, tool abuse, data leakage, and agent guardrails — the playbook we use shipping 60+ agents against live client infrastructure.</p>
+                <div class="blog-meta" style="margin-top: 1.5rem; border: none; padding: 0;"><span>12 min read</span><span>Jun 2026</span></div>
+            </a>
+            <div class="featured-blog-side">
+                <a href="blog/prompt-injection-defense.html" class="mini-blog-card">
+                    <h4>Prompt Injection & AI Red Teaming</h4>
+                    <span>Security · 10 min read</span>
+                </a>
+                <a href="blog/multi-agent-orchestration.html" class="mini-blog-card">
+                    <h4>Orchestrating 60+ AI Agents</h4>
+                    <span>Agentic AI · 11 min read</span>
+                </a>
+                <a href="blog/rag-evaluation-ragas.html" class="mini-blog-card">
+                    <h4>RAG Evaluation with RAGAS</h4>
+                    <span>MLOps · 9 min read</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="blog-grid">
+            <a href="blog/mcp-security-best-practices.html" class="blog-card">
+                <div class="blog-card-visual mcp">🔌</div>
+                <div class="blog-card-body">
+                    <div class="blog-tags"><span class="blog-tag security">MCP</span><span class="blog-tag">GRC</span></div>
+                    <h2>Securing MCP Servers: Tool Access Control</h2>
+                    <p>70+ cloud tools, isolated credentials, and audit trails — securing the bridge between agents and production systems.</p>
+                    <div class="blog-meta"><span>Apr 2026</span><span>10 min</span></div>
+                </div>
+            </a>
+            <a href="blog/llm-cost-optimization.html" class="blog-card">
+                <div class="blog-card-visual ops">💰</div>
+                <div class="blog-card-body">
+                    <div class="blog-tags"><span class="blog-tag">LLM Ops</span><span class="blog-tag">Cost</span></div>
+                    <h2>Cutting LLM Token Costs by 30%</h2>
+                    <p>Model-tier routing, prompt scaffolds, caching, and eval-gated optimization without quality loss.</p>
+                    <div class="blog-meta"><span>Apr 2026</span><span>8 min</span></div>
+                </div>
+            </a>
+            <a href="blog/prompt-injection-defense.html" class="blog-card">
+                <div class="blog-card-visual security">⚔️</div>
+                <div class="blog-card-body">
+                    <div class="blog-tags"><span class="blog-tag security">Red Team</span></div>
+                    <h2>Prompt Injection Defense Guide</h2>
+                    <p>Indirect injection, tool hijacking, multi-turn attacks — and layered controls that actually work.</p>
+                    <div class="blog-meta"><span>Jun 2026</span><span>10 min</span></div>
+                </div>
+            </a>
+        </div>
+
+        <div class="blog-cta">
+            <a href="blog/index.html" class="btn btn-primary">View All Articles →</a>
         </div>
     </section>
 
