@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manjunath K G - AI Engineer & Security Researcher</title>
+    <title>Manjunath K G - AI/ML Trainee Engineer & Security</title>
+    <meta name="description" content="AI/ML Trainee Engineer at Ampcus Cyber. Agentic AI, autonomous pentesting, MCP, RAG, and cyber security.">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
         
@@ -958,6 +959,151 @@
             color: rgba(255, 255, 255, 0.6);
         }
 
+        .domain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .domain-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--neon-blue);
+        }
+
+        .domain-card ul {
+            list-style: none;
+            line-height: 1.9;
+        }
+
+        .domain-card li {
+            padding-left: 1.25rem;
+            position: relative;
+            margin-bottom: 0.75rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.98rem;
+        }
+
+        .domain-card li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--neon-pink);
+        }
+
+        .contrib-table-wrap {
+            overflow-x: auto;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .contrib-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(30px);
+            font-size: 0.95rem;
+        }
+
+        .contrib-table th,
+        .contrib-table td {
+            padding: 1rem 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .contrib-table th {
+            color: var(--neon-blue);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .contrib-table td {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .contrib-table code {
+            font-family: 'Space Grotesk', monospace;
+            color: var(--neon-pink);
+            font-size: 0.88rem;
+        }
+
+        .contrib-note {
+            margin-top: 1.5rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.95rem;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .cert-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 25px;
+            padding: 2rem;
+            transition: all 0.4s;
+        }
+
+        .cert-card:hover {
+            border-color: rgba(0, 212, 255, 0.3);
+            transform: translateY(-8px);
+        }
+
+        .cert-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .cert-card p {
+            color: rgba(255, 255, 255, 0.65);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .hero-badge {
+            padding: 0.45rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            background: rgba(0, 212, 255, 0.08);
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .code-snippet {
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            border-radius: 16px;
+            padding: 1.25rem 1.5rem;
+            font-family: 'Space Grotesk', monospace;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.75);
+            overflow-x: auto;
+            margin-top: 1.5rem;
+        }
+
+        .code-snippet .kw { color: var(--neon-pink); }
+        .code-snippet .str { color: var(--neon-blue); }
+
         @media (max-width: 768px) {
             .cursor, .cursor-follower {
                 display: none;
@@ -1011,12 +1157,13 @@
     <!-- Custom Cursor -->
     <div class="cursor"></div>
     <div class="cursor-follower"></div>
-
     <nav>
         <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
+            <li><a href="#ai">AI</a></li>
+            <li><a href="#security">Security</a></li>
+            <li><a href="#contributions">Work</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -1024,17 +1171,23 @@
     </nav>
 
     <section class="hero" id="home">
-        <div class="hero-label">Available for Opportunities</div>
+        <div class="hero-label">AI/ML Trainee Engineer · CEH v13 · Available for Opportunities</div>
         <h1>Manjunath K G</h1>
-        <p class="tagline">AI Engineer • Security Researcher • Backend Developer</p>
+        <p class="tagline">Agentic AI Engineer · Cyber Security · Backend Developer</p>
+        <div class="hero-badges">
+            <span class="hero-badge">60+ AI Agents</span>
+            <span class="hero-badge">Autonomous Pentesting</span>
+            <span class="hero-badge">MCP & RAG</span>
+            <span class="hero-badge">OWASP · MITRE ATT&CK</span>
+        </div>
         <p class="hero-description">
-            Building intelligent systems that think, adapt, and secure themselves. 
-            Passionate about AI/ML, Cybersecurity, and innovative software solutions that make a real impact.
+            Architecting production multi-agent systems for autonomous security assessment, GRC automation,
+            and LLM-powered workflows at Ampcus Cyber — where AI engineering meets real-world cyber security.
         </p>
         <div class="cta-buttons">
             <a href="#projects" class="btn btn-primary">View Projects</a>
             <a href="#contact" class="btn">Get In Touch</a>
-            <a href="#" onclick="downloadResume(); return false;" class="btn">📄 Download Resume</a>
+            <a href="#" onclick="downloadResume(); return false;" class="btn">Download Resume</a>
         </div>
     </section>
 
@@ -1042,44 +1195,361 @@
         <h2>About Me</h2>
         <div class="about-grid">
             <div class="glass-card about-text">
-                <p>🎓 <strong>Computer Science Graduate</strong> from ASC Degree College, Bangalore University with a CGPA of 8.3/10</p>
-                <p>🚀 Currently working as an <strong>AI/ML Analyst Intern at Ampcus Cyber</strong>, where I research and develop AI-driven solutions for security compliance automation.</p>
-                <p>🔐 Experienced in <strong>penetration testing, vulnerability assessment</strong>, and building intelligent automation systems.</p>
-                <p>💡 Passionate about solving real-world problems through <strong>analytical thinking</strong> and innovative <strong>AI-powered solutions</strong>.</p>
+                <p><strong>AI/ML Trainee Engineer at Ampcus Cyber</strong> — building agentic AI platforms for autonomous pentesting, compliance automation, and enterprise security products.</p>
+                <p><strong>BCA Graduate</strong> from ASC Degree College, Bangalore University · CGPA 8.3/10 · 2022–2025</p>
+                <p><strong>CEH v13 with AI</strong> certified (EC-Council) · active on TryHackMe for hands-on offensive security labs</p>
+                <p>I work across the full stack of AI engineering — multi-agent orchestration, RAG evaluation, MCP tool integration, and secure backend delivery with Docker, Temporal, and FastAPI.</p>
+                <div class="code-snippet">
+                    <span class="kw">class</span> AIEngineer:<br>
+                    &nbsp;&nbsp;role = <span class="str">"AI/ML Trainee Engineer @ Ampcus Cyber"</span><br>
+                    &nbsp;&nbsp;focus = [<span class="str">"Agentic AI"</span>, <span class="str">"Autonomous Pentesting"</span>, <span class="str">"GRC Automation"</span>]<br>
+                    &nbsp;&nbsp;stack = [<span class="str">"Claude SDK"</span>, <span class="str">"Temporal"</span>, <span class="str">"FastAPI"</span>, <span class="str">"Next.js"</span>]
+                </div>
             </div>
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-number">8.3</div>
-                    <div class="stat-label">CGPA</div>
+                    <div class="stat-number">60+</div>
+                    <div class="stat-label">AI Agents Built</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">2+</div>
-                    <div class="stat-label">Internships</div>
+                    <div class="stat-number">97%</div>
+                    <div class="stat-label">Report Time Saved</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">3+</div>
-                    <div class="stat-label">Projects</div>
+                    <div class="stat-number">&lt;4h</div>
+                    <div class="stat-label">Assessment Turnaround</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">10+</div>
-                    <div class="stat-label">Technologies</div>
+                    <div class="stat-number">70+</div>
+                    <div class="stat-label">MCP Cloud Tools</div>
                 </div>
             </div>
         </div>
     </section>
 
+    <section id="ai">
+        <h2>AI Engineering</h2>
+        <div class="domain-grid">
+            <div class="glass-card domain-card">
+                <h3>Agentic Systems & Orchestration</h3>
+                <ul>
+                    <li>60+ specialized AI agents for web, API, Android, source-code, and network surfaces</li>
+                    <li>Phased parallel orchestration (30+ agents/wave) with Temporal checkpointing & fault recovery</li>
+                    <li>ReAct, Plan-and-Execute, Supervisor/Router, Reflection, and Tool Calling patterns</li>
+                    <li>Claude Agent SDK + LiteLLM for model routing, fallbacks, and provider-agnostic execution</li>
+                </ul>
+            </div>
+            <div class="glass-card domain-card">
+                <h3>LLM Engineering & RAG</h3>
+                <ul>
+                    <li>30% token reduction via prompt tuning, caching, and model-tier selection</li>
+                    <li>RAGAS evaluation framework — +30% faithfulness/relevancy with regression guards</li>
+                    <li>Agentic RAG with hybrid search, Pinecone, Chroma, pgvector, and knowledge graphs</li>
+                    <li>Automated report generation: 6 hours → 10 minutes (~97% reduction)</li>
+                </ul>
+            </div>
+            <div class="glass-card domain-card">
+                <h3>MCP & Platform Engineering</h3>
+                <ul>
+                    <li>AWS MCP server with 70+ tools for automated cloud evidence fetching</li>
+                    <li>Multi-cloud GRC agents across AWS, Azure, GCP, Jira, and GitHub</li>
+                    <li>FastAPI / Next.js / PostgreSQL / Redis production stack with public REST APIs</li>
+                    <li>Docker containerization, Prometheus/Grafana observability, SpecKit delivery</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="security">
+        <h2>Cyber Security</h2>
+        <div class="domain-grid">
+            <div class="glass-card domain-card">
+                <h3>Offensive Security</h3>
+                <ul>
+                    <li>Autonomous pentesting SaaS covering OWASP Top 10 and OWASP WSTG categories</li>
+                    <li>Assessment turnaround: 3–5 days → under 4 hours with expanded multi-surface coverage</li>
+                    <li>Web, API, Android, source-code, and network attack surface analysis via AI agents</li>
+                    <li>CEH v13 (with AI) · Burp Suite · Nmap · Nessus · Playwright · Metasploit</li>
+                </ul>
+            </div>
+            <div class="glass-card domain-card">
+                <h3>AppSec & Vulnerability Research</h3>
+                <ul>
+                    <li>Built XSS scanners, bug trackers, and host discovery tools (open source on GitHub)</li>
+                    <li>SQLi, XSS, CSRF detection and remediation workflows</li>
+                    <li>API security assessments aligned with OWASP standards</li>
+                    <li>Custom Python scripts for fuzzing, directory traversal, and automated scanning</li>
+                </ul>
+            </div>
+            <div class="glass-card domain-card">
+                <h3>Defensive Security & GRC</h3>
+                <ul>
+                    <li>GRC evidence automation across cloud and dev platforms via MCP agents</li>
+                    <li>GRACEATHON winner — real-time infra monitoring agent (Python, FastAPI, Prometheus)</li>
+                    <li>Partnered with red-team, blue-team, and GRC teams on product features</li>
+                    <li>MITRE ATT&CK-aligned threat modeling and secure-coding practices</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contributions">
+        <h2>Engineering Contributions</h2>
+        <div class="contrib-table-wrap">
+            <table class="contrib-table">
+                <thead>
+                    <tr>
+                        <th>Contribution</th>
+                        <th>Domain</th>
+                        <th>Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>feat/autonomous-pentest-orchestrator</code></td>
+                        <td>Agentic AI</td>
+                        <td>60+ agents · 3–5 day assessments → <strong>&lt;4 hours</strong></td>
+                    </tr>
+                    <tr>
+                        <td><code>feat/temporal-parallel-agent-waves</code></td>
+                        <td>Workflow Engine</td>
+                        <td>30+ agents/wave · checkpointing & fault recovery</td>
+                    </tr>
+                    <tr>
+                        <td><code>feat/ai-report-generator</code></td>
+                        <td>LLM Pipeline</td>
+                        <td>Report turnaround <strong>6h → 10min (~97%)</strong></td>
+                    </tr>
+                    <tr>
+                        <td><code>feat/aws-mcp-evidence-server</code></td>
+                        <td>MCP / GRC</td>
+                        <td><strong>70+ tools</strong> for automated cloud evidence</td>
+                    </tr>
+                    <tr>
+                        <td><code>feat/multi-cloud-grc-agents</code></td>
+                        <td>Compliance</td>
+                        <td>AWS · Azure · GCP · Jira · GitHub integration</td>
+                    </tr>
+                    <tr>
+                        <td><code>feat/ragas-eval-framework</code></td>
+                        <td>LLM Ops</td>
+                        <td><strong>+30%</strong> faithfulness/relevancy · regression guard</td>
+                    </tr>
+                    <tr>
+                        <td><code>perf/llm-token-optimization</code></td>
+                        <td>Cost Engineering</td>
+                        <td><strong>-30%</strong> token usage via prompts & caching</td>
+                    </tr>
+                    <tr>
+                        <td><code>feat/graceathon-observability-agent</code></td>
+                        <td>Blue Team</td>
+                        <td>Real-time infra monitoring · Prometheus stack</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="contrib-note">Most production contributions live in private enterprise repos. Public work is showcased in Featured Projects below.</p>
+    </section>
+
+    <section id="skills">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Agentic AI & LLM</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Claude Agent SDK</span>
+                    <span class="skill-tag">LiteLLM</span>
+                    <span class="skill-tag">LangChain</span>
+                    <span class="skill-tag">LangGraph</span>
+                    <span class="skill-tag">CrewAI</span>
+                    <span class="skill-tag">RAGAS</span>
+                    <span class="skill-tag">Prompt Engineering</span>
+                    <span class="skill-tag">Fine-Tuning</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>RAG & MCP</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Agentic RAG</span>
+                    <span class="skill-tag">MCP Servers</span>
+                    <span class="skill-tag">Pinecone</span>
+                    <span class="skill-tag">Chroma</span>
+                    <span class="skill-tag">pgvector</span>
+                    <span class="skill-tag">Embeddings</span>
+                    <span class="skill-tag">Tool Calling</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>Cyber Security</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">CEH v13</span>
+                    <span class="skill-tag">OWASP Top 10</span>
+                    <span class="skill-tag">OWASP WSTG</span>
+                    <span class="skill-tag">MITRE ATT&CK</span>
+                    <span class="skill-tag">Burp Suite</span>
+                    <span class="skill-tag">Nessus</span>
+                    <span class="skill-tag">Nmap</span>
+                    <span class="skill-tag">Playwright</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>Backend & Infra</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">FastAPI</span>
+                    <span class="skill-tag">Next.js</span>
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">TypeScript</span>
+                    <span class="skill-tag">Temporal</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">Redis</span>
+                    <span class="skill-tag">AWS/Azure/GCP</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>AI/ML Trainee Engineer</h3>
+                    <h4>Ampcus Cyber · Sep 2025 – Present</h4>
+                    <p style="color: rgba(255,255,255,0.6);">Bengaluru, India</p>
+                    <ul>
+                        <li>Architected production autonomous pentesting SaaS with 60+ AI agents on FastAPI / Next.js / Temporal</li>
+                        <li>Built AWS MCP server (70+ tools) and multi-cloud GRC evidence agents</li>
+                        <li>Reduced assessment turnaround from 3–5 days to under 4 hours</li>
+                        <li>Implemented RAGAS evaluation framework and 30% LLM token optimization</li>
+                        <li>Owned end-to-end delivery: features, deployment, and production incident response</li>
+                        <li>Mentored teams on AI-tool adoption · Docker · SpecKit secure delivery</li>
+                    </ul>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <h2>Certifications & Achievements</h2>
+        <div class="cert-grid">
+            <div class="cert-card">
+                <h3>CEH v13 with AI</h3>
+                <p>Certified Ethical Hacker — EC-Council · Credential ID: ECC5074128936</p>
+            </div>
+            <div class="cert-card">
+                <h3>GRACEATHON Winner</h3>
+                <p>Internal company hackathon — built real-time infrastructure monitoring agent with Python, FastAPI, and Prometheus</p>
+            </div>
+            <div class="cert-card">
+                <h3>AI Mastery with ML</h3>
+                <p>Bluetick AI Academy — machine learning fundamentals and applied AI engineering</p>
+            </div>
+            <div class="cert-card">
+                <h3>TryHackMe Practitioner</h3>
+                <p>Active CTF and practical security labs — web, network, and privilege escalation challenges</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>VectorShift Pipeline Builder</h3>
+                <p>Visual AI/data pipeline builder with React drag-and-drop frontend and FastAPI backend for node-based workflow composition.</p>
+                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> React, FastAPI, JavaScript, Python</p>
+                <a href="https://github.com/manja7304/vectorshift-technical-assessment" class="project-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    View on GitHub
+                </a>
+            </div>
+            <div class="project-card">
+                <h3>Intelligent HR Candidate Profiling</h3>
+                <p>AI recruitment platform with NLP resume parsing, LinkedIn enrichment, and GPT-4 conversational interface for intelligent screening.</p>
+                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> Python, OpenAI API, NLP, RAG, SQLite</p>
+                <a href="https://github.com/manja7304/Intelligent-Chat-Interface" class="project-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    View on GitHub
+                </a>
+            </div>
+            <div class="project-card">
+                <h3>AI-Powered Web Scraper</h3>
+                <p>LLM-enhanced scraping with Selenium, Ollama summarization, Streamlit UI, and BrightData proxy support.</p>
+                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> Python, Selenium, Ollama, Streamlit</p>
+                <a href="https://github.com/manja7304/AI-WEB-SCRAPING" class="project-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    View on GitHub
+                </a>
+            </div>
+            <div class="project-card">
+                <h3>Dockerized Stock Data Pipeline</h3>
+                <p>Airflow-orchestrated ETL with Alpha Vantage API, PostgreSQL, and Docker Compose deployment.</p>
+                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> Apache Airflow, Docker, PostgreSQL, Python</p>
+                <a href="https://github.com/manja7304/stock-pipeline" class="project-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    View on GitHub
+                </a>
+            </div>
+            <div class="project-card">
+                <h3>Advance XSS Scanner</h3>
+                <p>Automated XSS detection and payload testing tool for web application security assessments.</p>
+                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> Python, Web Security, OWASP</p>
+                <a href="https://github.com/manja7304/ADVANCE-XSS-SCANNER" class="project-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    View on GitHub
+                </a>
+            </div>
+            <div class="project-card">
+                <h3>Host Discovery Web App</h3>
+                <p>Network reconnaissance and host enumeration utility for security assessment workflows.</p>
+                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> HTML, JavaScript, Network Security</p>
+                <a href="https://github.com/manja7304/HOST-DISCOVERY-WEB-APP" class="project-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    View on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Let's Connect</h2>
+        <div class="contact-container">
+            <p>
+                Open to <strong>Agentic AI Engineer</strong>, <strong>AI/ML Engineer</strong>, <strong>AI Security Engineer</strong>,
+                and <strong>Backend / Full-Stack</strong> roles — especially where multi-agent systems and security automation intersect.
+            </p>
+            <div class="contact-links">
+                <a href="https://github.com/manja7304" class="contact-icon" title="GitHub" target="_blank" rel="noopener">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/manjunathkg07" class="contact-icon" title="LinkedIn" target="_blank" rel="noopener">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <a href="mailto:manjunathkg4433@gmail.com" class="contact-icon" title="Email">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/></svg>
+                </a>
+                <a href="https://leetcode.com/u/chethan7304/" class="contact-icon" title="LeetCode" target="_blank" rel="noopener">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M16.102 17.93l-2.697 2.607c-.466.467-1.111.662-1.823.662s-1.357-.195-1.824-.662l-4.332-4.363c-.467-.467-.702-1.077-.702-1.783s.235-1.357.702-1.824l4.319-4.38c.467-.467 1.125-.645 1.837-.645s1.357.195 1.823.662l2.605 2.606c.391.391.391 1.016 0 1.408l-.932.931c-.391.391-1.016.391-1.408 0l-2.605-2.606c-.117-.117-.26-.176-.406-.176s-.289.059-.406.176l-4.319 4.334c-.117.117-.176.26-.176.406s.059.289.176.406l4.332 4.363c.117.117.26.176.406.176s.289-.059.406-.176l2.697-2.607c.391-.391 1.016-.391 1.408 0l.932.931c.391.392.391 1.017 0 1.408zM12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0z"/></svg>
+                </a>
+                <a href="https://tryhackme.com/p/manja4444" class="contact-icon" title="TryHackMe" target="_blank" rel="noopener">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18l6.9 3.45L12 11.08 5.1 7.63 12 4.18zM4 8.82l7 3.5v7.36l-7-3.5V8.82zm9 10.86v-7.36l7-3.5v7.36l-7 3.5z"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <footer>
-        <p>&copy; 2025 Manjunath K G. All rights reserved.</p>
-        <p style="margin-top: 0.5rem;">Built with passion for AI & Security</p>
+        <p>&copy; 2026 Manjunath K G. All rights reserved.</p>
+        <p style="margin-top: 0.5rem;">Building AI that secures · Securing AI that builds</p>
     </footer>
 
     <script>
-        // Custom Cursor
         const cursor = document.querySelector('.cursor');
         const cursorFollower = document.querySelector('.cursor-follower');
-        
-        let mouseX = 0, mouseY = 0;
-        let followerX = 0, followerY = 0;
+        let mouseX = 0, mouseY = 0, followerX = 0, followerY = 0;
 
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
@@ -1088,85 +1558,59 @@
             cursor.style.top = mouseY + 'px';
         });
 
-        // Smooth follower movement
         function animateFollower() {
-            const distX = mouseX - followerX;
-            const distY = mouseY - followerY;
-            
-            followerX += distX * 0.1;
-            followerY += distY * 0.1;
-            
+            followerX += (mouseX - followerX) * 0.1;
+            followerY += (mouseY - followerY) * 0.1;
             cursorFollower.style.left = followerX + 'px';
             cursorFollower.style.top = followerY + 'px';
-            
             requestAnimationFrame(animateFollower);
         }
         animateFollower();
 
-        // Cursor expand on hover
-        document.querySelectorAll('a, button, .project-card').forEach(el => {
+        document.querySelectorAll('a, button, .project-card, .glass-card').forEach(el => {
             el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
             el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
         });
 
-        // Create floating particles
         function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 50;
-
-            for (let i = 0; i < particleCount; i++) {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 particle.style.left = Math.random() * 100 + '%';
                 particle.style.top = Math.random() * 100 + '%';
                 particle.style.animationDelay = Math.random() * 20 + 's';
                 particle.style.animationDuration = (15 + Math.random() * 10) + 's';
-                particlesContainer.appendChild(particle);
+                container.appendChild(particle);
             }
         }
         createParticles();
 
-        // Smooth scrolling for navigation links
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
 
-        // Resume download function
         function downloadResume() {
-            // Option 1: Local file (default) - Place resume.pdf in same folder
             const link = document.createElement('a');
             link.href = 'CorrectResume.pdf';
             link.download = 'Manjunath_KG_Resume.pdf';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-            
-            // Option 2: Google Drive (uncomment and replace YOUR_FILE_ID)
-            // window.open('https://drive.google.com/uc?export=download&id=YOUR_FILE_ID', '_blank');
-            
-            // Option 3: GitHub (uncomment and replace with your repo link)
-            // window.open('https://raw.githubusercontent.com/manja7304/portfolio/main/resume.pdf', '_blank');
         }
 
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -100px 0px' };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
                     setTimeout(() => {
                         entry.target.style.opacity = '1';
                         entry.target.style.transform = 'translateY(0)';
-                    }, index * 100);
+                    }, index * 80);
                 }
             });
         }, observerOptions);
@@ -1178,223 +1622,17 @@
             observer.observe(section);
         });
 
-        // Stagger animation for cards
-        const cardObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const cards = entry.target.querySelectorAll('.skill-card, .project-card, .stat-card');
-                    cards.forEach((card, index) => {
-                        setTimeout(() => {
-                            card.style.opacity = '1';
-                            card.style.transform = 'translateY(0)';
-                        }, index * 100);
-                    });
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.skills-grid, .projects-grid, .stats-grid').forEach(grid => {
-            const cards = grid.querySelectorAll('.skill-card, .project-card, .stat-card');
-            cards.forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(30px)';
-                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            });
-            cardObserver.observe(grid);
-        });
-
-        // Active nav link on scroll
         window.addEventListener('scroll', () => {
             let current = '';
             document.querySelectorAll('section').forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (window.pageYOffset >= sectionTop - 200) {
+                if (window.pageYOffset >= section.offsetTop - 200) {
                     current = section.getAttribute('id');
                 }
             });
-
             document.querySelectorAll('nav a').forEach(a => {
-                a.classList.remove('active');
-                if (a.getAttribute('href') === `#${current}`) {
-                    a.classList.add('active');
-                }
-            });
-        });
-
-        // Parallax effect for orbs
-        document.addEventListener('mousemove', (e) => {
-            const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
-            const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
-            
-            document.querySelector('.orb1').style.transform = `translate(${moveX}px, ${moveY}px)`;
-            document.querySelector('.orb2').style.transform = `translate(${-moveX}px, ${-moveY}px)`;
-            document.querySelector('.orb3').style.transform = `translate(${moveX * 0.5}px, ${moveY * 0.5}px)`;
-        });
-
-        // 3D Tilt effect for cards
-        document.querySelectorAll('.glass-card, .skill-card, .project-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = (y - centerY) / 10;
-                const rotateY = (centerX - x) / 10;
-                
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+                a.classList.toggle('active', a.getAttribute('href') === `#${current}`);
             });
         });
     </script>
 </body>
 </html>
-
-    <section id="skills">
-        <h2>Technical Arsenal</h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <h3>🔤 Languages</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">C++</span>
-                    <span class="skill-tag">SQL</span>
-                </div>
-            </div>
-            <div class="skill-card">
-                <h3>🤖 AI/ML & Data</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">OpenAI API</span>
-                    <span class="skill-tag">LLM Fine-tuning</span>
-                    <span class="skill-tag">NLP</span>
-                    <span class="skill-tag">Apache Airflow</span>
-                    <span class="skill-tag">PostgreSQL</span>
-                </div>
-            </div>
-            <div class="skill-card">
-                <h3>🔒 Security Tools</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Burp Suite</span>
-                    <span class="skill-tag">Metasploit</span>
-                    <span class="skill-tag">Wireshark</span>
-                    <span class="skill-tag">Nmap</span>
-                    <span class="skill-tag">Nessus</span>
-                    <span class="skill-tag">OWASP</span>
-                </div>
-            </div>
-            <div class="skill-card">
-                <h3>🛠️ Development Tools</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Docker</span>
-                    <span class="skill-tag">Git/GitHub</span>
-                    <span class="skill-tag">Postman</span>
-                    <span class="skill-tag">REST APIs</span>
-                    <span class="skill-tag">Jupyter</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="experience">
-        <h2>Professional Journey</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h3>🤖 AI/ML Analyst Intern</h3>
-                    <h4>Ampcus Cyber | Sep 2025 - Present</h4>
-                    <p style="color: rgba(255,255,255,0.6);">📍 Bengaluru, India</p>
-                    <ul style="margin-top: 1rem;">
-                        <li>Researching AI-driven security compliance automation</li>
-                        <li>Built real-time server monitoring agents</li>
-                        <li>Fine-tuned OpenAI LLM models for security queries</li>
-                        <li>Automated compliance documentation workflows</li>
-                    </ul>
-                </div>
-                <div class="timeline-dot"></div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h3>🛡️ Security Intern</h3>
-                    <h4>Hacker School | Jan 2025 - Mar 2025</h4>
-                    <p style="color: rgba(255,255,255,0.6);">📍 Bengaluru, India</p>
-                    <ul style="margin-top: 1rem;">
-                        <li>Identified SQLi, XSS vulnerabilities using Burp Suite</li>
-                        <li>Conducted fuzzing & directory traversal assessments</li>
-                        <li>Automated Nessus vulnerability scans</li>
-                        <li>API security testing against OWASP Top 10</li>
-                    </ul>
-                </div>
-                <div class="timeline-dot"></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects">
-        <h2>Featured Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <h3>🤖 Intelligent HR Candidate Profiling</h3>
-                <p>AI-powered recruitment automation platform with NLP-based resume parsing, LinkedIn data extraction, and conversational AI interface for intelligent candidate screening.</p>
-                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> Python, OpenAI API, NLP, Web Scraping</p>
-                <a href="https://github.com/manja7304/Intelligent-Chat-Interface" class="project-link" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                    View on GitHub
-                </a>
-            </div>
-            <div class="project-card">
-                <h3>📈 Dockerized Stock Data Pipeline</h3>
-                <p>Automated ETL system using Apache Airflow to orchestrate stock market data extraction from Alpha Vantage API with PostgreSQL storage and Docker containerization.</p>
-                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> Apache Airflow, Docker, PostgreSQL, Python</p>
-                <a href="https://github.com/manja7304/stock-pipeline" class="project-link" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                    View on GitHub
-                </a>
-            </div>
-            <div class="project-card">
-                <h3>🕷️ AI Web Scraper</h3>
-                <p>Intelligent web scraping system with Ollama LLM integration for content summarization, Streamlit UI, and BrightData proxy infrastructure for reliable data extraction.</p>
-                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> Python, Selenium, Ollama, Streamlit</p>
-                <a href="https://github.com/manja7304/AI-WEB-SCRAPING" class="project-link" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                    View on GitHub
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <h2>Let's Connect</h2>
-        <div class="contact-container">
-            <p>
-                Open to opportunities in AI/ML Engineering, Security Engineering, and Backend Development. 
-                Let's build something amazing together!
-            </p>
-            <div class="contact-links">
-                <a href="https://github.com/manja7304" class="contact-icon" title="GitHub" target="_blank" rel="noopener">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                </a>
-                <a href="https://www.linkedin.com/in/manjunathkg07/" class="contact-icon" title="LinkedIn" target="_blank" rel="noopener">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                    </svg>
-                </a>
-                <a href="mailto:manjunathkg4433@gmail.com" class="contact-icon" title="Email">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
-                    </svg>
-                </a>
-            </div>
