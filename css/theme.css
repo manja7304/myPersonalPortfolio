@@ -54,8 +54,11 @@ body {
     justify-content: center;
 }
 
-.site-nav a {
-    color: var(--text-muted);
+a, button, .blog-card, .mini-blog-card, .featured-blog-main {
+    cursor: pointer;
+}
+
+.site-nav a { cursor: pointer; }
     text-decoration: none;
     font-size: 0.85rem;
     font-weight: 500;
