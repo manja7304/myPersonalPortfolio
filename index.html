@@ -676,6 +676,93 @@
             gap: 2.5rem;
         }
 
+        .project-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .project-filter-btn {
+            padding: 0.65rem 1.25rem;
+            border-radius: 999px;
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            background: rgba(15, 23, 42, 0.5);
+            color: rgba(255, 255, 255, 0.75);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .project-filter-btn:hover,
+        .project-filter-btn.active {
+            background: rgba(0, 212, 255, 0.15);
+            border-color: var(--neon-blue);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+        }
+
+        .project-filter-btn.active {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.25), rgba(255, 45, 149, 0.15));
+        }
+
+        .project-card.cyber-ai {
+            border-color: rgba(255, 45, 149, 0.2);
+        }
+
+        .project-card.cyber-ai:hover {
+            border-color: rgba(255, 45, 149, 0.55);
+            box-shadow: 0 30px 80px rgba(255, 45, 149, 0.2);
+        }
+
+        .project-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-badge {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            padding: 0.35rem 0.75rem;
+            border-radius: 999px;
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            color: var(--neon-blue);
+        }
+
+        .project-badge.framework {
+            background: rgba(255, 45, 149, 0.08);
+            border-color: rgba(255, 45, 149, 0.3);
+            color: var(--neon-pink);
+        }
+
+        .project-card.hidden {
+            display: none;
+        }
+
+        .projects-cta {
+            text-align: center;
+            margin-top: 2.5rem;
+        }
+
+        .projects-cta a {
+            color: var(--neon-blue);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.4);
+        }
+
+        .projects-cta a:hover {
+            color: var(--neon-pink);
+            border-color: var(--neon-pink);
+        }
+
         .project-card {
             background: rgba(15, 23, 42, 0.6);
             backdrop-filter: blur(30px);
@@ -1221,6 +1308,7 @@
         <h1>Manjunath K G</h1>
         <p class="tagline">Agentic AI Engineer · Cyber Security · Backend Developer</p>
         <div class="hero-badges">
+            <span class="hero-badge">11 Cyber AI Repos</span>
             <span class="hero-badge">60+ AI Agents</span>
             <span class="hero-badge">Autonomous Pentesting</span>
             <span class="hero-badge">MCP & RAG</span>
@@ -1396,7 +1484,7 @@
                 </tbody>
             </table>
         </div>
-        <p class="contrib-note">Most production contributions live in private enterprise repos. Public work is showcased in Featured Projects below.</p>
+        <p class="contrib-note">Most production contributions live in private enterprise repos. Public work — including the 11-repo Cyber AI portfolio — is showcased below.</p>
     </section>
 
     <section id="skills">
@@ -1410,6 +1498,7 @@
                     <span class="skill-tag">LangChain</span>
                     <span class="skill-tag">LangGraph</span>
                     <span class="skill-tag">CrewAI</span>
+                    <span class="skill-tag">Google ADK</span>
                     <span class="skill-tag">RAGAS</span>
                     <span class="skill-tag">Prompt Engineering</span>
                     <span class="skill-tag">Fine-Tuning</span>
@@ -1504,9 +1593,127 @@
 
     <section id="projects">
         <h2>Projects</h2>
-        <p class="section-intro">15+ public repositories across AI/ML engineering, cyber security tooling, data pipelines, and full-stack development.</p>
-        <div class="projects-grid">
-            <div class="project-card">
+        <p class="section-intro">26+ public repositories — 11 production-style Cyber AI agents (LangGraph, CrewAI, Google ADK), plus AI/ML pipelines, security tooling, and full-stack web apps. Every Cyber AI repo ships with Docker quickstart, CI, architecture diagrams, and eval metrics.</p>
+        <div class="project-filters" role="tablist" aria-label="Filter projects">
+            <button class="project-filter-btn active" type="button" data-filter="all">All (22)</button>
+            <button class="project-filter-btn" type="button" data-filter="cyber-ai">Cyber AI (11)</button>
+            <button class="project-filter-btn" type="button" data-filter="ai-ml">AI / ML (6)</button>
+            <button class="project-filter-btn" type="button" data-filter="security">Security (5)</button>
+            <button class="project-filter-btn" type="button" data-filter="web">Web (1)</button>
+        </div>
+        <div class="projects-grid" id="projectsGrid">
+            <div class="project-card cyber-ai" data-category="cyber-ai">
+                <div class="project-badges"><span class="project-badge">Scaffold</span><span class="project-badge framework">LangChain</span></div>
+                <h3>Cyber AI Project Template</h3>
+                <p>Production-grade scaffold — LLM factory, Ollama + Chroma Docker stack, FastAPI stubs, and CI. Foundation for the full portfolio.</p>
+                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> FastAPI, LangChain, Docker, Ollama</p>
+                <a href="https://github.com/manja7304/cyber-ai-project-template" class="project-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    View on GitHub
+                </a>
+            </div>
+            <div class="project-card cyber-ai" data-category="cyber-ai">
+                <div class="project-badges"><span class="project-badge">200 CVEs</span><span class="project-badge framework">LangGraph</span></div>
+                <h3>CVE Triage Agent</h3>
+                <p>LangGraph pipeline triaging 200 synthetic CVEs — CVSS scoring, MITRE ATT&CK mapping, and auditable Jira-style ticket drafts.</p>
+                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> LangGraph, FastAPI, Docker, Ollama</p>
+                <a href="https://github.com/manja7304/cyber-cve-triage-react" class="project-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    View on GitHub
+                </a>
+            </div>
+            <div class="project-card cyber-ai" data-category="cyber-ai">
+                <div class="project-badges"><span class="project-badge">500 Alerts</span><span class="project-badge framework">LangGraph</span></div>
+                <h3>SOC Analyst Supervisor Swarm</h3>
+                <p>Supervisor agent routes 500 SIEM alerts to specialist investigators with keyword-based routing and structured outputs.</p>
+                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> LangGraph, FastAPI, Python</p>
+                <a href="https://github.com/manja7304/soc-analyst-supervisor-swarm" class="project-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    View on GitHub
+                </a>
+            </div>
+            <div class="project-card cyber-ai" data-category="cyber-ai">
+                <div class="project-badges"><span class="project-badge">Plan-Execute</span><span class="project-badge framework">LangGraph</span></div>
+                <h3>Pentest Plan-Execute Orchestrator</h3>
+                <p>Plan-and-Execute pentest workflow across 4 waves with SqliteSaver checkpointing and resumable agent state.</p>
+                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> LangGraph, SqliteSaver, FastAPI</p>
+                <a href="https://github.com/manja7304/pentest-plan-execute-orchestrator" class="project-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    View on GitHub
+                </a>
+            </div>
+            <div class="project-card cyber-ai" data-category="cyber-ai">
+                <div class="project-badges"><span class="project-badge">25 Eval Q&A</span><span class="project-badge framework">LangChain</span></div>
+                <h3>OWASP Agentic RAG Assistant</h3>
+                <p>Self-correcting RAG over OWASP/WSTG policy docs with 25 gold Q&A eval set for security policy questions.</p>
+                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> LangChain, RAG, FastAPI</p>
+                <a href="https://github.com/manja7304/owasp-agentic-rag-assistant" class="project-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    View on GitHub
+                </a>
+            </div>
+            <div class="project-card cyber-ai" data-category="cyber-ai">
+                <div class="project-badges"><span class="project-badge">30 Snippets</span><span class="project-badge framework">LangChain</span></div>
+                <h3>Secure Code Reflection Reviewer</h3>
+                <p>Reflection loop for SAST-style review — initial finding, self-critique, and revised verdict on 30 code snippets.</p>
+                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> LangChain, Reflection, FastAPI</p>
+                <a href="https://github.com/manja7304/secure-code-reflection-reviewer" class="project-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    View on GitHub
+                </a>
+            </div>
+            <div class="project-card cyber-ai" data-category="cyber-ai">
+                <div class="project-badges"><span class="project-badge">4-Role Crew</span><span class="project-badge framework">CrewAI</span></div>
+                <h3>Red Team Strike Crew</h3>
+                <p>4-role CrewAI sequential crew — recon, vuln analysis, exploit advisory, and executive report from a target profile.</p>
+                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> CrewAI, Python, FastAPI</p>
+                <a href="https://github.com/manja7304/redteam-strike-crew" class="project-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    View on GitHub
+                </a>
+            </div>
+            <div class="project-card cyber-ai" data-category="cyber-ai">
+                <div class="project-badges"><span class="project-badge">3 Clouds</span><span class="project-badge framework">CrewAI</span></div>
+                <h3>GRC Evidence Collection Crew</h3>
+                <p>3-agent compliance crew gathering audit evidence across AWS, Azure, and GCP synthetic fixtures.</p>
+                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> CrewAI, Multi-Cloud, FastAPI</p>
+                <a href="https://github.com/manja7304/grc-evidence-collection-crew" class="project-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    View on GitHub
+                </a>
+            </div>
+            <div class="project-card cyber-ai" data-category="cyber-ai">
+                <div class="project-badges"><span class="project-badge">CIS Controls</span><span class="project-badge framework">Google ADK</span></div>
+                <h3>Cloud Posture ADK Agent</h3>
+                <p>Google ADK-style CSPM agent detecting CIS control misconfigurations with structured tool calling.</p>
+                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> Google ADK, FastAPI, Python</p>
+                <a href="https://github.com/manja7304/cloud-posture-adk-agent" class="project-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    View on GitHub
+                </a>
+            </div>
+            <div class="project-card cyber-ai" data-category="cyber-ai">
+                <div class="project-badges"><span class="project-badge">Graph RAG</span><span class="project-badge framework">LangChain</span></div>
+                <h3>Threat Intel Graph RAG</h3>
+                <p>NetworkX knowledge graph with hybrid retrieval for correlating threat intel entities and relationships.</p>
+                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> NetworkX, LangChain, Graph RAG</p>
+                <a href="https://github.com/manja7304/threat-intel-graph-rag" class="project-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    View on GitHub
+                </a>
+            </div>
+            <div class="project-card cyber-ai" data-category="cyber-ai">
+                <div class="project-badges"><span class="project-badge">Audit Log</span><span class="project-badge framework">LangGraph</span></div>
+                <h3>Incident Response HITL Copilot</h3>
+                <p>Human-in-the-loop IR playbook with approval gates, proposed actions, and full audit log for SOC workflows.</p>
+                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> LangGraph, HITL, FastAPI</p>
+                <a href="https://github.com/manja7304/incident-response-hitl-copilot" class="project-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    View on GitHub
+                </a>
+            </div>
+            <div class="project-card" data-category="ai-ml">
+                
                 <h3>VectorShift Pipeline Builder</h3>
                 <p>Visual AI/data pipeline builder with React drag-and-drop frontend and FastAPI backend for node-based workflow composition.</p>
                 <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> React, FastAPI, JavaScript, Python</p>
@@ -1515,7 +1722,8 @@
                     View on GitHub
                 </a>
             </div>
-            <div class="project-card">
+            <div class="project-card" data-category="ai-ml">
+                
                 <h3>Intelligent HR Candidate Profiling</h3>
                 <p>AI recruitment platform with NLP resume parsing, LinkedIn enrichment, and GPT-4 conversational interface for intelligent screening.</p>
                 <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> Python, OpenAI API, NLP, RAG, SQLite</p>
@@ -1524,7 +1732,8 @@
                     View on GitHub
                 </a>
             </div>
-            <div class="project-card">
+            <div class="project-card" data-category="ai-ml">
+                
                 <h3>AI-Powered Web Scraper</h3>
                 <p>LLM-enhanced scraping with Selenium, Ollama summarization, Streamlit UI, and BrightData proxy support.</p>
                 <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> Python, Selenium, Ollama, Streamlit</p>
@@ -1533,7 +1742,8 @@
                     View on GitHub
                 </a>
             </div>
-            <div class="project-card">
+            <div class="project-card" data-category="ai-ml">
+                
                 <h3>Dockerized Stock Data Pipeline</h3>
                 <p>Airflow-orchestrated ETL with Alpha Vantage API, PostgreSQL, and Docker Compose deployment.</p>
                 <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> Apache Airflow, Docker, PostgreSQL, Python</p>
@@ -1542,34 +1752,8 @@
                     View on GitHub
                 </a>
             </div>
-            <div class="project-card">
-                <h3>Advance XSS Scanner</h3>
-                <p>Automated XSS detection and payload testing tool for web application security assessments.</p>
-                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> Python, Web Security, OWASP</p>
-                <a href="https://github.com/manja7304/ADVANCE-XSS-SCANNER" class="project-link" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    View on GitHub
-                </a>
-            </div>
-            <div class="project-card">
-                <h3>Host Discovery Web App</h3>
-                <p>Network reconnaissance and host enumeration utility for security assessment workflows.</p>
-                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> HTML, JavaScript, Network Security</p>
-                <a href="https://github.com/manja7304/HOST-DISCOVERY-WEB-APP" class="project-link" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    View on GitHub
-                </a>
-            </div>
-            <div class="project-card">
-                <h3>Bug Tracker</h3>
-                <p>Vulnerability tracking and triage workflow for security findings.</p>
-                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> Python, Flask, Security</p>
-                <a href="https://github.com/manja7304/BUG-TRACKER-" class="project-link" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    View on GitHub
-                </a>
-            </div>
-            <div class="project-card">
+            <div class="project-card" data-category="ai-ml">
+                
                 <h3>Opioid Risk Prediction (ML)</h3>
                 <p>Machine learning model for opioid dependency risk classification.</p>
                 <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> Python, Scikit-learn, ML</p>
@@ -1578,25 +1762,8 @@
                     View on GitHub
                 </a>
             </div>
-            <div class="project-card">
-                <h3>UI & API Test Automation</h3>
-                <p>Automated UI and API testing assignment framework.</p>
-                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> Testing, Automation</p>
-                <a href="https://github.com/manja7304/Automation-Assignment---UI---API-Testing" class="project-link" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    View on GitHub
-                </a>
-            </div>
-            <div class="project-card">
-                <h3>Image Steganography</h3>
-                <p>Data hiding and steganography techniques in digital images.</p>
-                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> HTML, JavaScript, Security</p>
-                <a href="https://github.com/manja7304/IMAGE-STEGANOGRAPHY" class="project-link" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    View on GitHub
-                </a>
-            </div>
-            <div class="project-card">
+            <div class="project-card" data-category="ai-ml">
+                
                 <h3>Python Mini Projects</h3>
                 <p>Collection of Python scripts for automation, data, and utilities.</p>
                 <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> Python</p>
@@ -1605,7 +1772,68 @@
                     View on GitHub
                 </a>
             </div>
+            <div class="project-card" data-category="security">
+                
+                <h3>Advance XSS Scanner</h3>
+                <p>Automated XSS detection and payload testing tool for web application security assessments.</p>
+                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> Python, Web Security, OWASP</p>
+                <a href="https://github.com/manja7304/ADVANCE-XSS-SCANNER" class="project-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    View on GitHub
+                </a>
+            </div>
+            <div class="project-card" data-category="security">
+                
+                <h3>Host Discovery Web App</h3>
+                <p>Network reconnaissance and host enumeration utility for security assessment workflows.</p>
+                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> HTML, JavaScript, Network Security</p>
+                <a href="https://github.com/manja7304/HOST-DISCOVERY-WEB-APP" class="project-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    View on GitHub
+                </a>
+            </div>
+            <div class="project-card" data-category="security">
+                
+                <h3>Bug Tracker</h3>
+                <p>Vulnerability tracking and triage workflow for security findings.</p>
+                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> Python, Flask, Security</p>
+                <a href="https://github.com/manja7304/BUG-TRACKER-" class="project-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    View on GitHub
+                </a>
+            </div>
+            <div class="project-card" data-category="security">
+                
+                <h3>UI & API Test Automation</h3>
+                <p>Automated UI and API testing assignment framework.</p>
+                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> Testing, Automation</p>
+                <a href="https://github.com/manja7304/Automation-Assignment---UI---API-Testing" class="project-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    View on GitHub
+                </a>
+            </div>
+            <div class="project-card" data-category="security">
+                
+                <h3>Image Steganography</h3>
+                <p>Data hiding and steganography techniques in digital images.</p>
+                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> HTML, JavaScript, Security</p>
+                <a href="https://github.com/manja7304/IMAGE-STEGANOGRAPHY" class="project-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    View on GitHub
+                </a>
+            </div>
+            <div class="project-card" data-category="web">
+                
+                <h3>Deccan Valley School Website</h3>
+                <p>Modern responsive school website with Next.js 16 App Router, React 19, TypeScript, Tailwind CSS v4, and Framer Motion.</p>
+                <p style="margin-top: 1rem; color: var(--neon-blue);"><strong>Tech:</strong> Next.js, React, TypeScript, Tailwind</p>
+                <a href="https://github.com/manja7304/School-Website" class="project-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    View on GitHub
+                </a>
+            </div>
         </div>
+        <p class="projects-cta">Full Cyber AI portfolio with architecture diagrams → <a href="https://github.com/manja7304#-projects" target="_blank" rel="noopener">GitHub Profile README</a></p>
     </section>
 
     <section id="blog">
@@ -1791,6 +2019,22 @@
             section.style.transform = 'translateY(50px)';
             section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
             observer.observe(section);
+        });
+
+        const projectFilterBtns = document.querySelectorAll('.project-filter-btn');
+        const projectCards = document.querySelectorAll('.project-card[data-category]');
+
+        projectFilterBtns.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const filter = btn.dataset.filter;
+                projectFilterBtns.forEach((b) => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                projectCards.forEach((card) => {
+                    const show = filter === 'all' || card.dataset.category === filter;
+                    card.classList.toggle('hidden', !show);
+                });
+            });
         });
     </script>
     <script src="js/nav.js"></script>
