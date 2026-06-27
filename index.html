@@ -1202,34 +1202,6 @@
             display: inline-block;
         }
 
-        .scroll-hint {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            color: rgba(255,255,255,0.35);
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            animation: bounce 2s infinite;
-        }
-
-        .scroll-hint::after {
-            content: '';
-            width: 1px;
-            height: 40px;
-            background: linear-gradient(to bottom, var(--neon-blue), transparent);
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(8px); }
-        }
-
         @media (max-width: 768px) {
             .featured-blog { grid-template-columns: 1fr; }
         }
@@ -1323,7 +1295,6 @@
             <a href="#contact" class="btn">Get In Touch</a>
             <a href="#" onclick="downloadResume(); return false;" class="btn">Download Resume</a>
         </div>
-        <div class="scroll-hint">Scroll</div>
     </section>
 
     <section id="about">
