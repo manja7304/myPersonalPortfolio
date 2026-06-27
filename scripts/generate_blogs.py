@@ -57,7 +57,7 @@ ARTICLE_TEMPLATE = '''<!DOCTYPE html>
     <div class="bg-animation"></div>
     <div class="grid-overlay"></div>
     <header class="main-nav" id="mainNav">
-        <a href="../index.html" class="nav-brand">{brand_icon}<span class="nav-brand-text">Manjunath<span class="accent">.</span></span></a>
+        <a href="../index.html" class="nav-brand">{brand_icon}<span class="nav-brand-text">Manjunath K G</span></a>
         <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
         <div class="nav-panel" id="navPanel">
             <ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="index.html" class="active">Blog</a></li><li><a href="../index.html#contact">Contact</a></li></ul>
@@ -109,7 +109,7 @@ INDEX_HEADER = '''<!DOCTYPE html>
     <div class="bg-animation"></div>
     <div class="grid-overlay"></div>
     <header class="main-nav" id="mainNav">
-        <a href="../index.html" class="nav-brand">{brand_icon}<span class="nav-brand-text">Manjunath<span class="accent">.</span></span></a>
+        <a href="../index.html" class="nav-brand">{brand_icon}<span class="nav-brand-text">Manjunath K G</span></a>
         <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
         <div class="nav-panel" id="navPanel">
             <ul class="nav-links">

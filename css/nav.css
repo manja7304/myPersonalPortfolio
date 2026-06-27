@@ -33,8 +33,9 @@
 .nav-brand-text {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 600;
-    font-size: 1.15rem;
-    letter-spacing: -0.3px;
+    font-size: 1.05rem;
+    letter-spacing: -0.2px;
+    white-space: nowrap;
 }
 
 .nav-brand-text .accent { color: var(--neon-blue); }
