@@ -41,6 +41,8 @@ POSTS = [
     {"slug": "spec-driven-ai-development", "title": "Spec-Driven Development for AI Platform Engineering", "cat": "ops", "tags": ["SpecKit", "Engineering"], "visual": "ops", "emoji": "📋", "date": "Mar 2026", "read": "7 min", "excerpt": "SpecKit workflow for auditable, maintainable AI feature delivery.", "sections": [("Spec First", "Write agent behavior specs before implementation."), ("Review Cycle", "Security and domain experts review specs before coding."), ("Traceability", "Link specs to tests, eval datasets, and deployment artifacts.")]},
 ]
 
+BRAND_ICON = '<span class="nav-brand-icon" aria-hidden="true"><img src="../assets/brand-mark.svg" alt="" width="40" height="40" decoding="async"></span>'
+
 ARTICLE_TEMPLATE = '''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,7 +57,7 @@ ARTICLE_TEMPLATE = '''<!DOCTYPE html>
     <div class="bg-animation"></div>
     <div class="grid-overlay"></div>
     <header class="main-nav" id="mainNav">
-        <a href="../index.html" class="nav-brand"><span class="nav-brand-icon">M</span><span class="nav-brand-text">Manjunath<span class="accent">.</span></span></a>
+        <a href="../index.html" class="nav-brand">{brand_icon}<span class="nav-brand-text">Manjunath<span class="accent">.</span></span></a>
         <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
         <div class="nav-panel" id="navPanel">
             <ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="index.html" class="active">Blog</a></li><li><a href="../index.html#contact">Contact</a></li></ul>
@@ -107,7 +109,7 @@ INDEX_HEADER = '''<!DOCTYPE html>
     <div class="bg-animation"></div>
     <div class="grid-overlay"></div>
     <header class="main-nav" id="mainNav">
-        <a href="../index.html" class="nav-brand"><span class="nav-brand-icon">M</span><span class="nav-brand-text">Manjunath<span class="accent">.</span></span></a>
+        <a href="../index.html" class="nav-brand">{brand_icon}<span class="nav-brand-text">Manjunath<span class="accent">.</span></span></a>
         <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
         <div class="nav-panel" id="navPanel">
             <ul class="nav-links">
@@ -163,6 +165,7 @@ def sections_html(sections):
 def generate_article(post):
     tags_html = tag_html(post["tags"])
     content = ARTICLE_TEMPLATE.format(
+        brand_icon=BRAND_ICON,
         title=post["title"],
         excerpt=post["excerpt"],
         tags_html=tags_html,
@@ -187,7 +190,10 @@ def generate_index():
             tags_card=tags_card, title=p["title"], excerpt=p["excerpt"],
             date=p["date"], read=p["read"],
         ))
-    (BLOG / "index.html").write_text(INDEX_HEADER + "\n".join(cards) + INDEX_FOOTER, encoding="utf-8")
+    (BLOG / "index.html").write_text(
+        INDEX_HEADER.format(brand_icon=BRAND_ICON) + "\n".join(cards) + INDEX_FOOTER,
+        encoding="utf-8",
+    )
     print("  ✓ blog/index.html (30 posts)")
 
 
