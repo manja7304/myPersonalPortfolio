@@ -41,7 +41,7 @@ POSTS = [
     {"slug": "spec-driven-ai-development", "title": "Spec-Driven Development for AI Platform Engineering", "cat": "ops", "tags": ["SpecKit", "Engineering"], "visual": "ops", "emoji": "📋", "date": "Mar 2026", "read": "7 min", "excerpt": "SpecKit workflow for auditable, maintainable AI feature delivery.", "sections": [("Spec First", "Write agent behavior specs before implementation."), ("Review Cycle", "Security and domain experts review specs before coding."), ("Traceability", "Link specs to tests, eval datasets, and deployment artifacts.")]},
 ]
 
-BRAND_ICON = '<span class="nav-brand-icon" aria-hidden="true"><img src="../assets/brand-mark.svg" alt="" width="40" height="40" decoding="async"></span>'
+BRAND_ICON = ''
 
 ARTICLE_TEMPLATE = '''<!DOCTYPE html>
 <html lang="en">
